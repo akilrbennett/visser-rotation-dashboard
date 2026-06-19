@@ -1,6 +1,6 @@
 # TODO — AI Macro Nexus Rotation Dashboard
 
-## Current phase: DESIGN PRESENTATION (decisions locked; awaiting design approval)
+## Current phase: BUILD (spec + plan approved; executing tasks)
 
 ### Decisions LOCKED (2026-06-19, via brainstorming):
 1. **Price feed scope** = ALL shown names. Fetch all 54 US in one batch snapshot call (narrowing saves no API cost). Foreign per #2.
@@ -14,10 +14,17 @@
 - Runtime-fetch (not inlined), branch-serve Pages, vanilla JS no deps, graceful degradation, `P` rendered as flagged unmapped row.
 
 ## Plan
-- [ ] Brainstorm + lock the three decisions with the user
-- [ ] Write detailed plan (writing-plans skill)
-- [ ] Get plan approval
-- [ ] Build (data copy, index.html, fetch script, deploy/cron config)
+- [x] Brainstorm + lock the three decisions with the user
+- [x] Write spec → `docs/superpowers/specs/2026-06-19-rotation-dashboard-design.md` (committed)
+- [x] Write detailed plan → `docs/superpowers/plans/2026-06-19-rotation-dashboard.md`
+- [ ] Build, task-by-task (TDD where deterministic; ui-ux-pro-max for visuals):
+  - [ ] Task 1: Scaffold data dir + package.json
+  - [ ] Task 2: Price-fetch pure logic (node --test)
+  - [ ] Task 3: Fetch CLI wiring + sync_rotation.sh + preview.sh
+  - [ ] Task 4: Dashboard data layer + functional skeleton (Playwright counts)
+  - [ ] Task 5: Visual design pass (ui-ux-pro-max) + filters
+  - [ ] Task 6: Daily cron workflow (.github/workflows/prices.yml)
+  - [ ] Task 7: README + final verification
 - [ ] Review (requesting-code-review / code-review)
 - [ ] Verify before completion (verification-before-completion skill)
 
