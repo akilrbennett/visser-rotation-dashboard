@@ -90,10 +90,10 @@ import assert from 'node:assert/strict';
 import { parseSnapshot, buildPricesJson, run } from '../scripts/fetch_prices.mjs';
 
 test('parseSnapshot uses current-day close (day.c) + change_pct', () => {
-  const snap = { tickers: [{ ticker: 'NVDA', day: { c: 210.69 }, prevDay: { c: 200 }, todaysChangePerc: 5.345 }] };
+  const snap = { tickers: [{ ticker: 'NVDA', day: { c: 210.69 }, prevDay: { c: 200 }, todaysChangePerc: 5.367 }] };
   const q = parseSnapshot(snap, '2026-06-19');
   assert.equal(q.NVDA.close, 210.69);
-  assert.equal(q.NVDA.change_pct, 5.35);          // rounded to 2dp
+  assert.equal(q.NVDA.change_pct, 5.37);          // rounded to 2dp (avoid .xx5 float-edge)
   assert.equal(q.NVDA.date, '2026-06-19');
   assert.equal(q.NVDA.stale, undefined);
 });
