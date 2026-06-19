@@ -82,6 +82,7 @@
   .name .nm-sub { display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin-top:6px; font-size:.76rem; color:var(--muted); }
   .tag { font-size:.68rem; padding:2px 7px; border-radius:999px; border:1px solid var(--border-strong); color:var(--muted); white-space:nowrap; }
   .tag.reason { border-color:var(--watch-bd); color:var(--watch); }
+  .exch { font-size:.66rem; color:var(--muted-2); border:1px solid var(--border); border-radius:4px; padding:1px 6px; margin-left:2px; white-space:nowrap; }
   .transition { font-family:var(--mono); font-size:.74rem; color:var(--fg); }
   .delta.pos { color:var(--in); } .delta.neg { color:var(--out); }
   .pos { color:var(--in); } .neg { color:var(--out); }
@@ -277,6 +278,20 @@ function fmtDelta(v) { return (typeof v === 'number') ? (v > 0 ? '+' + v : '' + 
 function isUnmapped(t) { return t && (t.theme === null || t.current_setup === null); }
 function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
 
+// ticker -> {us, exch}; ticker -> prev_setup. Populated in main() before rendering.
+let metaOf = {};
+let prevSetupOf = {};
+function isForeign(ticker) { const m = metaOf[ticker]; return !!(m && !m.us); }
+function closeText(ticker, q) {
+  // Foreign closes are in local currency, so never prefix "$".
+  if (isForeign(ticker)) return (q && typeof q.close === 'number') ? q.close.toFixed(2) : '—';
+  return fmtClose(q);
+}
+function exchLabel(ticker) {
+  const m = metaOf[ticker];
+  return (m && !m.us && m.exch) ? ` <span class="exch" title="Non-US listing — US feed may not cover">${esc(m.exch)}</span>` : '';
+}
+
 // ---------- Rendering ----------
 const $ = (sel) => document.querySelector(sel);
 const el = (tag, props = {}, html) => { const e = document.createElement(tag); Object.assign(e, props); if (html != null) e.innerHTML = html; return e; };
@@ -299,11 +314,11 @@ function nameCard(n, prices, reason) {
     <div class="nm-head">
       <span class="nm-tkr">${esc(n.ticker)}</span>
       <span class="nm-co">${esc(n.company)}</span>
-      <span class="nm-px">${fmtClose(q)}</span>
+      <span class="nm-px">${closeText(n.ticker, q)}</span>
       <span class="nm-chg ${chgCls}">${fmtChange(q)}</span>
     </div>
     <div class="nm-sub">
-      <span class="tag">${esc(n.theme || '')}</span>
+      <span class="tag">${esc(n.theme || '')}</span>${exchLabel(n.ticker)}
       <span class="transition">${transition}</span>
       ${typeof n.score === 'number' ? `<span class="mono">${n.score}</span>` : ''}
       ${dlt ? `<span class="delta ${dltCls} mono">${dlt}</span>` : ''}
@@ -351,9 +366,9 @@ function renderBasket(testid, basket, prices) {
     const prior = b.prev_setup ? ` <span class="muted">(was ${esc(b.prev_setup)})</span>` : '';
     host.appendChild(el('div', { className: 'b-row' }, `
       <span class="b-tkr">${esc(b.ticker)}</span>
-      <span class="b-co">${esc(b.company || '(unmapped)')}</span>
+      <span class="b-co">${esc(b.company || '(unmapped)')}</span>${exchLabel(b.ticker)}
       <span class="muted" style="font-size:.78rem">${esc(b.setup || 'n/a')}${prior}</span>
-      <span class="b-px">${fmtClose(q)}</span>`));
+      <span class="b-px">${closeText(b.ticker, q)}</span>`));
   });
 }
 
@@ -367,12 +382,15 @@ function renderTickerTable(tickers, prices, laneOf) {
     tr.dataset.lane = laneOf[t.ticker] || '';
     tr.dataset.ticker = t.ticker;
     tr.dataset.score = (typeof t.current_score === 'number') ? String(t.current_score) : '';
-    const company = isUnmapped(t) ? `${esc(t.company)} <span class="warn" title="Not in current 100-universe — verify mapping">⚠</span>` : esc(t.company);
+    const baseCompany = isUnmapped(t) ? `${esc(t.company)} <span class="warn" title="Not in current 100-universe — verify mapping">⚠</span>` : esc(t.company);
+    const company = baseCompany + exchLabel(t.ticker);
     const buyable = (t.current_setup === 'Buyable');
+    const prev = prevSetupOf[t.ticker];
+    const setupDisp = (prev && prev !== t.current_setup) ? `${esc(prev)} → ${esc(t.current_setup)}` : esc(t.current_setup || '—');
     tr.innerHTML = `<td class="tkr">${esc(t.ticker)}</td><td>${company}</td><td>${esc(t.theme || '—')}</td>
-      <td class="setup-cell" data-buyable="${buyable}">${esc(t.current_setup || '—')}</td>
+      <td class="setup-cell" data-buyable="${buyable}">${setupDisp}</td>
       <td class="num">${t.current_score ?? '—'}</td><td>${esc((t.baskets || []).join(' / ') || '—')}</td>
-      <td class="num">${fmtClose(q)}</td>`;
+      <td class="num">${closeText(t.ticker, q)}</td>`;
     tb.appendChild(tr);
   });
 }
@@ -452,6 +470,8 @@ async function main() {
   const rotation = await loadJson('./data/rotation_latest.json');
   const prices = await loadJson('./data/prices.json');
   if (!rotation) { document.body.innerHTML = '<main><p style="color:#f85149">Failed to load rotation data.</p></main>'; return; }
+  rotation.tickers.forEach((t) => { metaOf[t.ticker] = { us: !!t.us_listed, exch: t.exchange_country }; });
+  Object.values(rotation.signal_changes).forEach((bucket) => bucket.forEach((n) => { if (n.prev_setup != null) prevSetupOf[n.ticker] = n.prev_setup; }));
   const lanes = bucketize(rotation.signal_changes);
   const laneOf = {};
   lanes.in.forEach((n) => { laneOf[n.ticker] = 'in'; });
