@@ -1,0 +1,2255 @@
+{
+  "meta": {
+    "generated": "2026-06-19",
+    "source_workbook": "AI_Macro_Nexus_Master_Tracker.xlsx",
+    "current_week": "2026-06-12",
+    "previous_week": "2026-05-29",
+    "universe": 100,
+    "model_tone": "Constructive / Risk-On",
+    "disclaimer": "Model framework only. NOT Jordi Visser personal holdings, NOT investment advice. Basket inclusion = thematic conviction; setup label = timing. They are different.",
+    "cadences": {
+      "rotation_data": "weekly (refreshed from tracker via nexus-update skill)",
+      "close_prices": "daily after market close (fetched from Massive/Polygon)"
+    },
+    "research_context": {
+      "indexed_through": "2026-06-18",
+      "latest_dashboard": "2026-06-12 (newest technical dashboard; rotation data current as of this week)",
+      "latest_notes": [
+        {
+          "date": "2026-06-14",
+          "title": "AI Mid-Cycle Slowdown: OpenAI, Anthropic, and the AI Price War",
+          "file": "2026-06-14_AI_Mid_Cycle_Slowdown_Price_War.pdf"
+        },
+        {
+          "date": "2026-06-14",
+          "title": "Entegris Update: Vera Rubin Confirms the Missing Chemical Layer",
+          "file": "2026-06-14_Entegris_Vera_Rubin_Chemical_Update.pdf"
+        },
+        {
+          "date": "2026-06-15",
+          "title": "AI Mid-Cycle Slowdown: From Building Intelligence to Applying It",
+          "file": "2026-06-15_AI_Mid_Cycle_Slowdown_Building_Applying.pdf"
+        },
+        {
+          "date": "2026-06-18",
+          "title": "Vera Rubin, 800V, and the Beginning of the AI Factory Era",
+          "file": "2026-06-18_Vera_Rubin_800V_AI_Factory_Era.pdf"
+        }
+      ],
+      "narrative": "Framing as of mid-June 2026: an \"AI mid-cycle slowdown\" — a pullback inside a bull market, not a bubble unwind. Secular rotation OUT of hyperscalers/Mag 7 and INTO the rest of the stack: memory, advanced packaging, specialty chemicals/materials, and 800V industrial power infrastructure (Vera Rubin \"AI factory era\"). NVDA roughly flat (~+2%) since 2025-10-31 and ranked 84th of 100 in the agentic thematic portfolio even as that portfolio is up ~70%. This matches the 2026-06-12 dashboard: every theme cooled week-over-week, yet ~47/100 names stayed Buyable as prior Extended names reset into fresh setups (memory, packaging, design IP, chemicals)."
+    }
+  },
+  "themes": {
+    "2026-05-29": [
+      {
+        "theme": "Whole Rack",
+        "score": 86.7,
+        "prev_score": null,
+        "score_change": null,
+        "rating": "Strong",
+        "pct_above_50d": 100,
+        "breakouts": 11,
+        "breakdowns": 0,
+        "status": "Leading"
+      },
+      {
+        "theme": "Semicon Architecture",
+        "score": 83.9,
+        "prev_score": null,
+        "score_change": null,
+        "rating": "Strong",
+        "pct_above_50d": 91.3,
+        "breakouts": 18,
+        "breakdowns": 1,
+        "status": "Leading"
+      },
+      {
+        "theme": "Optical & Interconnects",
+        "score": 80.3,
+        "prev_score": null,
+        "score_change": null,
+        "rating": "Strong",
+        "pct_above_50d": 88.2,
+        "breakouts": 13,
+        "breakdowns": 1,
+        "status": "Leading"
+      },
+      {
+        "theme": "Chemicals & Materials",
+        "score": 78.8,
+        "prev_score": null,
+        "score_change": null,
+        "rating": "Strong",
+        "pct_above_50d": 88.2,
+        "breakouts": 10,
+        "breakdowns": 0,
+        "status": "Constructive"
+      },
+      {
+        "theme": "Energy & Infrastructure",
+        "score": 56.5,
+        "prev_score": null,
+        "score_change": null,
+        "rating": "Constructive",
+        "pct_above_50d": 46.2,
+        "breakouts": 8,
+        "breakdowns": 6,
+        "status": "Weakening"
+      },
+      {
+        "theme": "Macro Satellites",
+        "score": 50,
+        "prev_score": null,
+        "score_change": null,
+        "rating": "Constructive",
+        "pct_above_50d": 40,
+        "breakouts": 1,
+        "breakdowns": 2,
+        "status": "Weakening"
+      }
+    ],
+    "2026-06-12": [
+      {
+        "theme": "Whole Rack",
+        "score": 80,
+        "prev_score": 86.7,
+        "score_change": -6.7,
+        "rating": "Strong",
+        "pct_above_50d": 75,
+        "breakouts": 9,
+        "breakdowns": 2,
+        "status": "Weakening"
+      },
+      {
+        "theme": "Semicon Architecture",
+        "score": 79.3,
+        "prev_score": 83.9,
+        "score_change": -4.6,
+        "rating": "Strong",
+        "pct_above_50d": 82.6,
+        "breakouts": 16,
+        "breakdowns": 1,
+        "status": "Weakening"
+      },
+      {
+        "theme": "Chemicals & Materials",
+        "score": 75.6,
+        "prev_score": 78.8,
+        "score_change": -3.2,
+        "rating": "Constructive",
+        "pct_above_50d": 82.4,
+        "breakouts": 9,
+        "breakdowns": 0,
+        "status": "Constructive"
+      },
+      {
+        "theme": "Optical & Interconnects",
+        "score": 73.8,
+        "prev_score": 80.3,
+        "score_change": -6.5,
+        "rating": "Constructive",
+        "pct_above_50d": 76.5,
+        "breakouts": 9,
+        "breakdowns": 0,
+        "status": "Weakening"
+      },
+      {
+        "theme": "Energy & Infrastructure",
+        "score": 51.2,
+        "prev_score": 56.5,
+        "score_change": -5.3,
+        "rating": "Weakening",
+        "pct_above_50d": 38.5,
+        "breakouts": 5,
+        "breakdowns": 7,
+        "status": "Weakening"
+      },
+      {
+        "theme": "Macro Satellites",
+        "score": 34,
+        "prev_score": 50,
+        "score_change": -16,
+        "rating": "Weakening",
+        "pct_above_50d": 20,
+        "breakouts": 1,
+        "breakdowns": 3,
+        "status": "Breaking Down"
+      }
+    ]
+  },
+  "action_queue": [
+    {
+      "priority": "High",
+      "ticker": "ASML",
+      "company": "ASML",
+      "theme": "Semicon Architecture",
+      "score": 100,
+      "setup": "Buyable",
+      "prev_setup": null,
+      "signal_change": "—",
+      "basket": "25-Name",
+      "why": "basket member, score 100.0",
+      "suggested_action": "Candidate for Swing Setup"
+    },
+    {
+      "priority": "High",
+      "ticker": "ARM",
+      "company": "Arm Holdings",
+      "theme": "Semicon Architecture",
+      "score": 100,
+      "setup": "Buyable",
+      "prev_setup": "Strong but Extended",
+      "signal_change": "New Buyable",
+      "basket": "100-Universe",
+      "why": "Extended→Buyable, score 100.0",
+      "suggested_action": "Add to Thesis List"
+    },
+    {
+      "priority": "High",
+      "ticker": "INTC",
+      "company": "Intel",
+      "theme": "Whole Rack",
+      "score": 100,
+      "setup": "Buyable",
+      "prev_setup": null,
+      "signal_change": "—",
+      "basket": "10-Name + 25-Name",
+      "why": "basket member, score 100.0",
+      "suggested_action": "Candidate for Swing Setup"
+    },
+    {
+      "priority": "High",
+      "ticker": "AMKR",
+      "company": "Amkor Technology",
+      "theme": "Semicon Architecture",
+      "score": 100,
+      "setup": "Buyable",
+      "prev_setup": "Constructive",
+      "signal_change": "New Buyable",
+      "basket": "100-Universe",
+      "why": "Constructive→Buyable, score 100.0",
+      "suggested_action": "Add to Thesis List"
+    },
+    {
+      "priority": "High",
+      "ticker": "4062.T",
+      "company": "Ibiden",
+      "theme": "Semicon Architecture",
+      "score": 95,
+      "setup": "Buyable",
+      "prev_setup": "Strong but Extended",
+      "signal_change": "New Buyable",
+      "basket": "100-Universe",
+      "why": "Extended→Buyable, score 95.0",
+      "suggested_action": "Add to Thesis List"
+    },
+    {
+      "priority": "High",
+      "ticker": "HPE",
+      "company": "HPE",
+      "theme": "Whole Rack",
+      "score": 95,
+      "setup": "Buyable",
+      "prev_setup": "Strong but Extended",
+      "signal_change": "New Buyable",
+      "basket": "100-Universe",
+      "why": "Extended→Buyable, score 95.0",
+      "suggested_action": "Add to Thesis List"
+    },
+    {
+      "priority": "High",
+      "ticker": "CSCO",
+      "company": "Cisco Systems",
+      "theme": "Whole Rack",
+      "score": 95,
+      "setup": "Buyable",
+      "prev_setup": "Strong but Extended",
+      "signal_change": "New Buyable",
+      "basket": "100-Universe",
+      "why": "Extended→Buyable, score 95.0",
+      "suggested_action": "Add to Thesis List"
+    },
+    {
+      "priority": "High",
+      "ticker": "AMD",
+      "company": "AMD",
+      "theme": "Whole Rack",
+      "score": 95,
+      "setup": "Buyable",
+      "prev_setup": "Strong but Extended",
+      "signal_change": "New Buyable",
+      "basket": "25-Name",
+      "why": "basket member, Extended→Buyable, score 95.0",
+      "suggested_action": "Add to Thesis List"
+    },
+    {
+      "priority": "High",
+      "ticker": "MU",
+      "company": "Micron Technology",
+      "theme": "Whole Rack",
+      "score": 95,
+      "setup": "Buyable",
+      "prev_setup": "Strong but Extended",
+      "signal_change": "New Buyable",
+      "basket": "10-Name + 25-Name",
+      "why": "basket member, on your Watchlist, Extended→Buyable, score 95.0",
+      "suggested_action": "Add to Thesis List"
+    },
+    {
+      "priority": "High",
+      "ticker": "DELL",
+      "company": "Dell Technologies",
+      "theme": "Whole Rack",
+      "score": 95,
+      "setup": "Buyable",
+      "prev_setup": "Strong but Extended",
+      "signal_change": "New Buyable",
+      "basket": "10-Name + 25-Name",
+      "why": "basket member, Extended→Buyable, score 95.0",
+      "suggested_action": "Add to Thesis List"
+    },
+    {
+      "priority": "High",
+      "ticker": "000660.KS",
+      "company": "SK hynix",
+      "theme": "Whole Rack",
+      "score": 95,
+      "setup": "Buyable",
+      "prev_setup": "Strong but Extended",
+      "signal_change": "New Buyable",
+      "basket": "100-Universe",
+      "why": "Extended→Buyable, score 95.0",
+      "suggested_action": "Add to Thesis List"
+    },
+    {
+      "priority": "High",
+      "ticker": "ENTG",
+      "company": "Entegris",
+      "theme": "Chemicals & Materials",
+      "score": 95,
+      "setup": "Buyable",
+      "prev_setup": "Constructive",
+      "signal_change": "New Buyable",
+      "basket": "25-Name",
+      "why": "basket member, Constructive→Buyable, score 95.0",
+      "suggested_action": "Add to Thesis List"
+    },
+    {
+      "priority": "High",
+      "ticker": "IFX.DE",
+      "company": "Infineon",
+      "theme": "Semicon Architecture",
+      "score": 95,
+      "setup": "Buyable",
+      "prev_setup": "Strong but Extended",
+      "signal_change": "New Buyable",
+      "basket": "25-Name",
+      "why": "basket member, Extended→Buyable, score 95.0",
+      "suggested_action": "Add to Thesis List"
+    },
+    {
+      "priority": "High",
+      "ticker": "ALAB",
+      "company": "Astera Labs",
+      "theme": "Optical & Interconnects",
+      "score": 95,
+      "setup": "Buyable",
+      "prev_setup": "Strong but Extended",
+      "signal_change": "New Buyable",
+      "basket": "25-Name",
+      "why": "basket member, Extended→Buyable, score 95.0",
+      "suggested_action": "Add to Thesis List"
+    },
+    {
+      "priority": "Medium",
+      "ticker": "MRVL",
+      "company": "Marvell Technology",
+      "theme": "Semicon Architecture",
+      "score": 95,
+      "setup": "Buyable",
+      "prev_setup": null,
+      "signal_change": "—",
+      "basket": "10-Name + 25-Name",
+      "why": "basket member, on your Watchlist, score 95.0",
+      "suggested_action": "Research"
+    },
+    {
+      "priority": "Medium",
+      "ticker": "6146.T",
+      "company": "Disco Corp",
+      "theme": "Semicon Architecture",
+      "score": 90,
+      "setup": "Buyable",
+      "prev_setup": "Weakening",
+      "signal_change": "New Buyable",
+      "basket": "100-Universe",
+      "why": "Weakening→Buyable, score 90.0",
+      "suggested_action": "Add to Thesis List"
+    }
+  ],
+  "signal_changes": {
+    "new_buyable": [
+      {
+        "ticker": "AMKR",
+        "company": "Amkor Technology",
+        "theme": "Semicon Architecture",
+        "prev_setup": "Constructive",
+        "current_setup": "Buyable",
+        "prev_score": 75,
+        "score": 100,
+        "score_change": 25,
+        "interpretation": "Setup confirmed to Buyable"
+      },
+      {
+        "ticker": "ARM",
+        "company": "Arm Holdings",
+        "theme": "Semicon Architecture",
+        "prev_setup": "Extended",
+        "current_setup": "Buyable",
+        "prev_score": 85,
+        "score": 100,
+        "score_change": 15,
+        "interpretation": "Setup confirmed to Buyable"
+      },
+      {
+        "ticker": "ENTG",
+        "company": "Entegris",
+        "theme": "Chemicals & Materials",
+        "prev_setup": "Constructive",
+        "current_setup": "Buyable",
+        "prev_score": 75,
+        "score": 95,
+        "score_change": 20,
+        "interpretation": "Setup confirmed to Buyable"
+      },
+      {
+        "ticker": "IFX.DE",
+        "company": "Infineon",
+        "theme": "Semicon Architecture",
+        "prev_setup": "Extended",
+        "current_setup": "Buyable",
+        "prev_score": 90,
+        "score": 95,
+        "score_change": 5,
+        "interpretation": "Setup confirmed to Buyable"
+      },
+      {
+        "ticker": "4062.T",
+        "company": "Ibiden",
+        "theme": "Semicon Architecture",
+        "prev_setup": "Extended",
+        "current_setup": "Buyable",
+        "prev_score": 90,
+        "score": 95,
+        "score_change": 5,
+        "interpretation": "Setup confirmed to Buyable"
+      },
+      {
+        "ticker": "ALAB",
+        "company": "Astera Labs",
+        "theme": "Optical & Interconnects",
+        "prev_setup": "Extended",
+        "current_setup": "Buyable",
+        "prev_score": 85,
+        "score": 95,
+        "score_change": 10,
+        "interpretation": "Setup confirmed to Buyable"
+      },
+      {
+        "ticker": "CSCO",
+        "company": "Cisco Systems",
+        "theme": "Whole Rack",
+        "prev_setup": "Extended",
+        "current_setup": "Buyable",
+        "prev_score": 90,
+        "score": 95,
+        "score_change": 5,
+        "interpretation": "Setup confirmed to Buyable"
+      },
+      {
+        "ticker": "MU",
+        "company": "Micron Technology",
+        "theme": "Whole Rack",
+        "prev_setup": "Extended",
+        "current_setup": "Buyable",
+        "prev_score": 85,
+        "score": 95,
+        "score_change": 10,
+        "interpretation": "Setup confirmed to Buyable"
+      },
+      {
+        "ticker": "DELL",
+        "company": "Dell Technologies",
+        "theme": "Whole Rack",
+        "prev_setup": "Extended",
+        "current_setup": "Buyable",
+        "prev_score": 90,
+        "score": 95,
+        "score_change": 5,
+        "interpretation": "Setup confirmed to Buyable"
+      },
+      {
+        "ticker": "AMD",
+        "company": "AMD",
+        "theme": "Whole Rack",
+        "prev_setup": "Extended",
+        "current_setup": "Buyable",
+        "prev_score": 85,
+        "score": 95,
+        "score_change": 10,
+        "interpretation": "Setup confirmed to Buyable"
+      },
+      {
+        "ticker": "HPE",
+        "company": "HPE",
+        "theme": "Whole Rack",
+        "prev_setup": "Extended",
+        "current_setup": "Buyable",
+        "prev_score": 90,
+        "score": 95,
+        "score_change": 5,
+        "interpretation": "Setup confirmed to Buyable"
+      },
+      {
+        "ticker": "000660.KS",
+        "company": "SK hynix",
+        "theme": "Whole Rack",
+        "prev_setup": "Extended",
+        "current_setup": "Buyable",
+        "prev_score": 90,
+        "score": 95,
+        "score_change": 5,
+        "interpretation": "Setup confirmed to Buyable"
+      },
+      {
+        "ticker": "6146.T",
+        "company": "Disco Corp",
+        "theme": "Semicon Architecture",
+        "prev_setup": "Weakening",
+        "current_setup": "Buyable",
+        "prev_score": 35,
+        "score": 90,
+        "score_change": 55,
+        "interpretation": "Setup confirmed to Buyable"
+      },
+      {
+        "ticker": "MRN.PA",
+        "company": "Mersen",
+        "theme": "Chemicals & Materials",
+        "prev_setup": "Extended",
+        "current_setup": "Buyable",
+        "prev_score": 90,
+        "score": 85,
+        "score_change": -5,
+        "interpretation": "Setup confirmed to Buyable"
+      },
+      {
+        "ticker": "6857.T",
+        "company": "Advantest",
+        "theme": "Semicon Architecture",
+        "prev_setup": "Weakening",
+        "current_setup": "Buyable",
+        "prev_score": 55,
+        "score": 85,
+        "score_change": 30,
+        "interpretation": "Setup confirmed to Buyable"
+      },
+      {
+        "ticker": "ESI",
+        "company": "Element Solutions",
+        "theme": "Chemicals & Materials",
+        "prev_setup": "Constructive",
+        "current_setup": "Buyable",
+        "prev_score": 75,
+        "score": 80,
+        "score_change": 5,
+        "interpretation": "Setup confirmed to Buyable"
+      },
+      {
+        "ticker": "LITE",
+        "company": "Lumentum",
+        "theme": "Optical & Interconnects",
+        "prev_setup": "Weakening",
+        "current_setup": "Buyable",
+        "prev_score": 50,
+        "score": 80,
+        "score_change": 30,
+        "interpretation": "Setup confirmed to Buyable"
+      }
+    ],
+    "became_extended": [
+      {
+        "ticker": "BESI.AS",
+        "company": "BE Semiconductor",
+        "theme": "Semicon Architecture",
+        "prev_setup": "Buyable",
+        "current_setup": "Extended",
+        "prev_score": 100,
+        "score": 90,
+        "score_change": -10,
+        "interpretation": "Hot — do not chase"
+      },
+      {
+        "ticker": "KLAC",
+        "company": "KLA Corp",
+        "theme": "Semicon Architecture",
+        "prev_setup": "Buyable",
+        "current_setup": "Extended",
+        "prev_score": 90,
+        "score": 85,
+        "score_change": -5,
+        "interpretation": "Hot — do not chase"
+      }
+    ],
+    "lost_buyable": [
+      {
+        "ticker": "4203.T",
+        "company": "Sumitomo Bakelite",
+        "theme": "Chemicals & Materials",
+        "prev_setup": "Buyable",
+        "current_setup": "Constructive",
+        "prev_score": 85,
+        "score": 75,
+        "score_change": -10,
+        "interpretation": "No longer Buyable — reassess"
+      },
+      {
+        "ticker": "QCOM",
+        "company": "Qualcomm",
+        "theme": "Semicon Architecture",
+        "prev_setup": "Buyable",
+        "current_setup": "Constructive",
+        "prev_score": 95,
+        "score": 75,
+        "score_change": -20,
+        "interpretation": "No longer Buyable — reassess"
+      },
+      {
+        "ticker": "PRY.MI",
+        "company": "Prysmian",
+        "theme": "Optical & Interconnects",
+        "prev_setup": "Buyable",
+        "current_setup": "Constructive",
+        "prev_score": 100,
+        "score": 75,
+        "score_change": -25,
+        "interpretation": "No longer Buyable — reassess"
+      },
+      {
+        "ticker": "NVT",
+        "company": "nVent Electric",
+        "theme": "Energy & Infrastructure",
+        "prev_setup": "Buyable",
+        "current_setup": "Constructive",
+        "prev_score": 95,
+        "score": 75,
+        "score_change": -20,
+        "interpretation": "No longer Buyable — reassess"
+      },
+      {
+        "ticker": "PWR",
+        "company": "Quanta Services",
+        "theme": "Energy & Infrastructure",
+        "prev_setup": "Buyable",
+        "current_setup": "Constructive",
+        "prev_score": 90,
+        "score": 75,
+        "score_change": -15,
+        "interpretation": "No longer Buyable — reassess"
+      },
+      {
+        "ticker": "4186.T",
+        "company": "TOK",
+        "theme": "Chemicals & Materials",
+        "prev_setup": "Buyable",
+        "current_setup": "Constructive",
+        "prev_score": 100,
+        "score": 70,
+        "score_change": -30,
+        "interpretation": "No longer Buyable — reassess"
+      },
+      {
+        "ticker": "SOI.PA",
+        "company": "Soitec",
+        "theme": "Semicon Architecture",
+        "prev_setup": "Buyable",
+        "current_setup": "Constructive",
+        "prev_score": 95,
+        "score": 65,
+        "score_change": -30,
+        "interpretation": "No longer Buyable — reassess"
+      },
+      {
+        "ticker": "GLW",
+        "company": "Corning",
+        "theme": "Optical & Interconnects",
+        "prev_setup": "Buyable",
+        "current_setup": "Constructive",
+        "prev_score": 90,
+        "score": 65,
+        "score_change": -25,
+        "interpretation": "No longer Buyable — reassess"
+      },
+      {
+        "ticker": "CLFD",
+        "company": "Clearfield",
+        "theme": "Optical & Interconnects",
+        "prev_setup": "Buyable",
+        "current_setup": "Constructive",
+        "prev_score": 85,
+        "score": 65,
+        "score_change": -20,
+        "interpretation": "No longer Buyable — reassess"
+      },
+      {
+        "ticker": "BE",
+        "company": "Bloom Energy",
+        "theme": "Energy & Infrastructure",
+        "prev_setup": "Buyable",
+        "current_setup": "Constructive",
+        "prev_score": 85,
+        "score": 65,
+        "score_change": -20,
+        "interpretation": "No longer Buyable — reassess"
+      },
+      {
+        "ticker": "SU.PA",
+        "company": "Schneider Electric",
+        "theme": "Whole Rack",
+        "prev_setup": "Buyable",
+        "current_setup": "Weakening",
+        "prev_score": 95,
+        "score": 55,
+        "score_change": -40,
+        "interpretation": "No longer Buyable — reassess"
+      },
+      {
+        "ticker": "NVDA",
+        "company": "NVIDIA",
+        "theme": "Semicon Architecture",
+        "prev_setup": "Buyable",
+        "current_setup": "Weakening",
+        "prev_score": 80,
+        "score": 50,
+        "score_change": -30,
+        "interpretation": "No longer Buyable — reassess"
+      }
+    ],
+    "pullback": [
+      {
+        "ticker": "AKE.PA",
+        "company": "Arkema",
+        "theme": "Chemicals & Materials",
+        "prev_setup": "Buyable",
+        "current_setup": "Pullback",
+        "prev_score": 85,
+        "score": 55,
+        "score_change": -30,
+        "interpretation": "Cooled into entry window"
+      },
+      {
+        "ticker": "AVGO",
+        "company": "Broadcom",
+        "theme": "Semicon Architecture",
+        "prev_setup": "Buyable",
+        "current_setup": "Pullback",
+        "prev_score": 100,
+        "score": 50,
+        "score_change": -50,
+        "interpretation": "Cooled into entry window"
+      },
+      {
+        "ticker": "CIEN",
+        "company": "Ciena",
+        "theme": "Optical & Interconnects",
+        "prev_setup": "Buyable",
+        "current_setup": "Pullback",
+        "prev_score": 100,
+        "score": 50,
+        "score_change": -50,
+        "interpretation": "Cooled into entry window"
+      },
+      {
+        "ticker": "FN",
+        "company": "Fabrinet",
+        "theme": "Optical & Interconnects",
+        "prev_setup": "Buyable",
+        "current_setup": "Pullback",
+        "prev_score": 80,
+        "score": 50,
+        "score_change": -30,
+        "interpretation": "Cooled into entry window"
+      },
+      {
+        "ticker": "VRT",
+        "company": "Vertiv",
+        "theme": "Optical & Interconnects",
+        "prev_setup": "Constructive",
+        "current_setup": "Pullback",
+        "prev_score": 75,
+        "score": 50,
+        "score_change": -25,
+        "interpretation": "Cooled into entry window"
+      }
+    ],
+    "fell_to_avoid": [
+      {
+        "ticker": "XOM",
+        "company": "Exxon Mobil",
+        "theme": "Energy & Infrastructure",
+        "prev_setup": "Improving",
+        "current_setup": "Avoid",
+        "prev_score": 40,
+        "score": 30,
+        "score_change": -10,
+        "interpretation": "Trend broke — wait for a base"
+      },
+      {
+        "ticker": "EOSE",
+        "company": "Eos Energy",
+        "theme": "Energy & Infrastructure",
+        "prev_setup": "Constructive",
+        "current_setup": "Avoid",
+        "prev_score": 75,
+        "score": 30,
+        "score_change": -45,
+        "interpretation": "Trend broke — wait for a base"
+      },
+      {
+        "ticker": "NEE",
+        "company": "NextEra Energy",
+        "theme": "Energy & Infrastructure",
+        "prev_setup": "Weakening",
+        "current_setup": "Avoid",
+        "prev_score": 35,
+        "score": 30,
+        "score_change": -5,
+        "interpretation": "Trend broke — wait for a base"
+      },
+      {
+        "ticker": "PSTG",
+        "company": "Pure Storage",
+        "theme": "Whole Rack",
+        "prev_setup": "Constructive",
+        "current_setup": "Avoid",
+        "prev_score": 70,
+        "score": 30,
+        "score_change": -40,
+        "interpretation": "Trend broke — wait for a base"
+      },
+      {
+        "ticker": "SLV",
+        "company": "iShares Silver",
+        "theme": "Macro Satellites",
+        "prev_setup": "Weakening",
+        "current_setup": "Avoid",
+        "prev_score": 40,
+        "score": 30,
+        "score_change": -10,
+        "interpretation": "Trend broke — wait for a base"
+      },
+      {
+        "ticker": "SNPS",
+        "company": "Synopsys",
+        "theme": "Semicon Architecture",
+        "prev_setup": "Pullback",
+        "current_setup": "Avoid",
+        "prev_score": 60,
+        "score": 20,
+        "score_change": -40,
+        "interpretation": "Trend broke — wait for a base"
+      },
+      {
+        "ticker": "VST",
+        "company": "Vistra",
+        "theme": "Energy & Infrastructure",
+        "prev_setup": "Weakening",
+        "current_setup": "Avoid",
+        "prev_score": 40,
+        "score": 15,
+        "score_change": -25,
+        "interpretation": "Trend broke — wait for a base"
+      },
+      {
+        "ticker": "SMCI",
+        "company": "Super Micro",
+        "theme": "Whole Rack",
+        "prev_setup": "Extended",
+        "current_setup": "Avoid",
+        "prev_score": 80,
+        "score": 15,
+        "score_change": -65,
+        "interpretation": "Trend broke — wait for a base"
+      },
+      {
+        "ticker": "PLTR",
+        "company": "Palantir",
+        "theme": "Macro Satellites",
+        "prev_setup": "Weakening",
+        "current_setup": "Avoid",
+        "prev_score": 60,
+        "score": 0,
+        "score_change": -60,
+        "interpretation": "Trend broke — wait for a base"
+      }
+    ],
+    "improved_from_breakdown": [
+      {
+        "ticker": "CVX",
+        "company": "Chevron",
+        "theme": "Energy & Infrastructure",
+        "prev_setup": "Avoid",
+        "current_setup": "Weakening",
+        "prev_score": 30,
+        "score": 45,
+        "score_change": 15,
+        "interpretation": "Recovering off a base"
+      },
+      {
+        "ticker": "HUBB",
+        "company": "Hubbell",
+        "theme": "Energy & Infrastructure",
+        "prev_setup": "Avoid",
+        "current_setup": "Weakening",
+        "prev_score": 30,
+        "score": 45,
+        "score_change": 15,
+        "interpretation": "Recovering off a base"
+      },
+      {
+        "ticker": "J",
+        "company": "Jacobs Solutions",
+        "theme": "Energy & Infrastructure",
+        "prev_setup": "Avoid",
+        "current_setup": "Weakening",
+        "prev_score": 20,
+        "score": 45,
+        "score_change": 25,
+        "interpretation": "Recovering off a base"
+      },
+      {
+        "ticker": "HO.PA",
+        "company": "Thales",
+        "theme": "Semicon Architecture",
+        "prev_setup": "Avoid",
+        "current_setup": "Weakening",
+        "prev_score": 30,
+        "score": 40,
+        "score_change": 10,
+        "interpretation": "Recovering off a base"
+      },
+      {
+        "ticker": "BDC",
+        "company": "Belden",
+        "theme": "Optical & Interconnects",
+        "prev_setup": "Avoid",
+        "current_setup": "Weakening",
+        "prev_score": 0,
+        "score": 40,
+        "score_change": 40,
+        "interpretation": "Recovering off a base"
+      },
+      {
+        "ticker": "EWZ",
+        "company": "iShares Brazil",
+        "theme": "Macro Satellites",
+        "prev_setup": "Avoid",
+        "current_setup": "Weakening",
+        "prev_score": 30,
+        "score": 35,
+        "score_change": 5,
+        "interpretation": "Recovering off a base"
+      }
+    ],
+    "early_improvement": [
+      {
+        "ticker": "Q",
+        "company": "Qnity Electronics",
+        "theme": "Chemicals & Materials",
+        "prev_setup": "Constructive",
+        "current_setup": "Improving",
+        "prev_score": 65,
+        "score": 45,
+        "score_change": -20,
+        "interpretation": "Base building"
+      },
+      {
+        "ticker": "6526.T",
+        "company": "Socionext",
+        "theme": "Semicon Architecture",
+        "prev_setup": "Buyable",
+        "current_setup": "Improving",
+        "prev_score": 85,
+        "score": 35,
+        "score_change": -50,
+        "interpretation": "Base building"
+      }
+    ],
+    "constructive_not_buyable": [
+      {
+        "ticker": "HEN3.DE",
+        "company": "Henkel",
+        "theme": "Chemicals & Materials",
+        "prev_setup": "Weakening",
+        "current_setup": "Constructive",
+        "prev_score": 50,
+        "score": 75,
+        "score_change": 25,
+        "interpretation": "Positive, not confirmed"
+      },
+      {
+        "ticker": "ETR",
+        "company": "Entergy",
+        "theme": "Energy & Infrastructure",
+        "prev_setup": "Pullback",
+        "current_setup": "Constructive",
+        "prev_score": 50,
+        "score": 65,
+        "score_change": 15,
+        "interpretation": "Positive, not confirmed"
+      }
+    ]
+  },
+  "baskets": {
+    "10_name": [
+      {
+        "ticker": "MU",
+        "company": "Micron Technology",
+        "theme": "Whole Rack",
+        "score": 95,
+        "setup": "Buyable",
+        "prev_setup": "Strong but Extended",
+        "action": "Buyable — entry candidate on confirmation"
+      },
+      {
+        "ticker": "DELL",
+        "company": "Dell Technologies",
+        "theme": "Whole Rack",
+        "score": 95,
+        "setup": "Buyable",
+        "prev_setup": "Strong but Extended",
+        "action": "Buyable — entry candidate on confirmation"
+      },
+      {
+        "ticker": "INTC",
+        "company": "Intel",
+        "theme": "Whole Rack",
+        "score": 100,
+        "setup": "Buyable",
+        "prev_setup": "Strong Uptrend / Buyable",
+        "action": "Buyable — entry candidate on confirmation"
+      },
+      {
+        "ticker": "MRVL",
+        "company": "Marvell Technology",
+        "theme": "Semicon Architecture",
+        "score": 95,
+        "setup": "Buyable",
+        "prev_setup": "Strong Uptrend / Buyable",
+        "action": "Buyable — entry candidate on confirmation"
+      },
+      {
+        "ticker": "GLW",
+        "company": "Corning",
+        "theme": "Optical & Interconnects",
+        "score": 65,
+        "setup": "Constructive",
+        "prev_setup": "Strong Uptrend / Buyable",
+        "action": "Constructive — watch, not fully confirmed"
+      },
+      {
+        "ticker": "MOD",
+        "company": "Modine Mfg",
+        "theme": "Energy & Infrastructure",
+        "score": 80,
+        "setup": "Buyable",
+        "prev_setup": "Strong Uptrend / Buyable",
+        "action": "Buyable — entry candidate on confirmation"
+      },
+      {
+        "ticker": "NVDA",
+        "company": "NVIDIA",
+        "theme": "Semicon Architecture",
+        "score": 50,
+        "setup": "Weakening",
+        "prev_setup": "Strong Uptrend / Buyable",
+        "action": "No edge — maintain, do not add"
+      },
+      {
+        "ticker": "CAT",
+        "company": "Caterpillar",
+        "theme": "Energy & Infrastructure",
+        "score": 95,
+        "setup": "Buyable",
+        "prev_setup": "Strong Uptrend / Buyable",
+        "action": "Buyable — entry candidate on confirmation"
+      },
+      {
+        "ticker": "ETN",
+        "company": "Eaton",
+        "theme": "Energy & Infrastructure",
+        "score": 50,
+        "setup": "Weakening",
+        "prev_setup": "Constructive",
+        "action": "No edge — maintain, do not add"
+      },
+      {
+        "ticker": "CC",
+        "company": "Chemours",
+        "theme": "Chemicals & Materials",
+        "score": 55,
+        "setup": "Weakening",
+        "prev_setup": "Pullback Opportunity",
+        "action": "No edge — maintain, do not add"
+      }
+    ],
+    "25_name": [
+      {
+        "ticker": "MU",
+        "company": "Micron Technology",
+        "theme": "Whole Rack",
+        "score": 95,
+        "setup": "Buyable",
+        "prev_setup": "Strong but Extended",
+        "action": "Buyable — entry candidate on confirmation"
+      },
+      {
+        "ticker": "ALAB",
+        "company": "Astera Labs",
+        "theme": "Optical & Interconnects",
+        "score": 95,
+        "setup": "Buyable",
+        "prev_setup": "Strong but Extended",
+        "action": "Buyable — entry candidate on confirmation"
+      },
+      {
+        "ticker": "DELL",
+        "company": "Dell Technologies",
+        "theme": "Whole Rack",
+        "score": 95,
+        "setup": "Buyable",
+        "prev_setup": "Strong but Extended",
+        "action": "Buyable — entry candidate on confirmation"
+      },
+      {
+        "ticker": "AMD",
+        "company": "AMD",
+        "theme": "Whole Rack",
+        "score": 95,
+        "setup": "Buyable",
+        "prev_setup": "Strong but Extended",
+        "action": "Buyable — entry candidate on confirmation"
+      },
+      {
+        "ticker": "QCOM",
+        "company": "Qualcomm",
+        "theme": "Semicon Architecture",
+        "score": 75,
+        "setup": "Constructive",
+        "prev_setup": "Strong Uptrend / Buyable",
+        "action": "Constructive — watch, not fully confirmed"
+      },
+      {
+        "ticker": "IFX.DE",
+        "company": "Infineon",
+        "theme": "Semicon Architecture",
+        "score": 95,
+        "setup": "Buyable",
+        "prev_setup": "Strong but Extended",
+        "action": "Buyable — entry candidate on confirmation"
+      },
+      {
+        "ticker": "INTC",
+        "company": "Intel",
+        "theme": "Whole Rack",
+        "score": 100,
+        "setup": "Buyable",
+        "prev_setup": "Strong Uptrend / Buyable",
+        "action": "Buyable — entry candidate on confirmation"
+      },
+      {
+        "ticker": "MRVL",
+        "company": "Marvell Technology",
+        "theme": "Semicon Architecture",
+        "score": 95,
+        "setup": "Buyable",
+        "prev_setup": "Strong Uptrend / Buyable",
+        "action": "Buyable — entry candidate on confirmation"
+      },
+      {
+        "ticker": "P",
+        "company": "(not in current 100-universe)",
+        "theme": null,
+        "score": null,
+        "setup": null,
+        "prev_setup": null,
+        "action": "Verify ticker mapping"
+      },
+      {
+        "ticker": "GLW",
+        "company": "Corning",
+        "theme": "Optical & Interconnects",
+        "score": 65,
+        "setup": "Constructive",
+        "prev_setup": "Strong Uptrend / Buyable",
+        "action": "Constructive — watch, not fully confirmed"
+      },
+      {
+        "ticker": "COHR",
+        "company": "Coherent",
+        "theme": "Optical & Interconnects",
+        "score": 80,
+        "setup": "Buyable",
+        "prev_setup": "Strong Uptrend / Buyable",
+        "action": "Buyable — entry candidate on confirmation"
+      },
+      {
+        "ticker": "MKSI",
+        "company": "MKS Instruments",
+        "theme": "Chemicals & Materials",
+        "score": 95,
+        "setup": "Buyable",
+        "prev_setup": "Strong Uptrend / Buyable",
+        "action": "Buyable — entry candidate on confirmation"
+      },
+      {
+        "ticker": "MOD",
+        "company": "Modine Mfg",
+        "theme": "Energy & Infrastructure",
+        "score": 80,
+        "setup": "Buyable",
+        "prev_setup": "Strong Uptrend / Buyable",
+        "action": "Buyable — entry candidate on confirmation"
+      },
+      {
+        "ticker": "CDNS",
+        "company": "Cadence Design",
+        "theme": "Semicon Architecture",
+        "score": 95,
+        "setup": "Buyable",
+        "prev_setup": "Strong Uptrend / Buyable",
+        "action": "Buyable — entry candidate on confirmation"
+      },
+      {
+        "ticker": "ASML",
+        "company": "ASML",
+        "theme": "Semicon Architecture",
+        "score": 100,
+        "setup": "Buyable",
+        "prev_setup": "Strong Uptrend / Buyable",
+        "action": "Buyable — entry candidate on confirmation"
+      },
+      {
+        "ticker": "NVDA",
+        "company": "NVIDIA",
+        "theme": "Semicon Architecture",
+        "score": 50,
+        "setup": "Weakening",
+        "prev_setup": "Strong Uptrend / Buyable",
+        "action": "No edge — maintain, do not add"
+      },
+      {
+        "ticker": "BE",
+        "company": "Bloom Energy",
+        "theme": "Energy & Infrastructure",
+        "score": 65,
+        "setup": "Constructive",
+        "prev_setup": "Strong Uptrend / Buyable",
+        "action": "Constructive — watch, not fully confirmed"
+      },
+      {
+        "ticker": "CAT",
+        "company": "Caterpillar",
+        "theme": "Energy & Infrastructure",
+        "score": 95,
+        "setup": "Buyable",
+        "prev_setup": "Strong Uptrend / Buyable",
+        "action": "Buyable — entry candidate on confirmation"
+      },
+      {
+        "ticker": "ENTG",
+        "company": "Entegris",
+        "theme": "Chemicals & Materials",
+        "score": 95,
+        "setup": "Buyable",
+        "prev_setup": "Constructive",
+        "action": "Buyable — entry candidate on confirmation"
+      },
+      {
+        "ticker": "4063.T",
+        "company": "Shin-Etsu Chemical",
+        "theme": "Chemicals & Materials",
+        "score": 80,
+        "setup": "Buyable",
+        "prev_setup": "Strong Uptrend / Buyable",
+        "action": "Buyable — entry candidate on confirmation"
+      },
+      {
+        "ticker": "CVX",
+        "company": "Chevron",
+        "theme": "Energy & Infrastructure",
+        "score": 45,
+        "setup": "Weakening",
+        "prev_setup": "Breakdown Risk",
+        "action": "Weakening — reduce on strength, do not add"
+      },
+      {
+        "ticker": "ETN",
+        "company": "Eaton",
+        "theme": "Energy & Infrastructure",
+        "score": 50,
+        "setup": "Weakening",
+        "prev_setup": "Constructive",
+        "action": "No edge — maintain, do not add"
+      },
+      {
+        "ticker": "6857.T",
+        "company": "Advantest",
+        "theme": "Semicon Architecture",
+        "score": 85,
+        "setup": "Buyable",
+        "prev_setup": "Neutral / Watch",
+        "action": "Buyable — entry candidate on confirmation"
+      },
+      {
+        "ticker": "ANET",
+        "company": "Arista Networks",
+        "theme": "Whole Rack",
+        "score": 95,
+        "setup": "Buyable",
+        "prev_setup": "Strong Uptrend / Buyable",
+        "action": "Buyable — entry candidate on confirmation"
+      },
+      {
+        "ticker": "CC",
+        "company": "Chemours",
+        "theme": "Chemicals & Materials",
+        "score": 55,
+        "setup": "Weakening",
+        "prev_setup": "Pullback Opportunity",
+        "action": "No edge — maintain, do not add"
+      }
+    ]
+  },
+  "price_feed": {
+    "note": "Tickers to fetch daily close for. US-listed reliably covered by Massive/Polygon US feed; foreign listings flagged.",
+    "us_listed": [
+      "ALAB",
+      "AMD",
+      "AMKR",
+      "ANET",
+      "ARM",
+      "ASML",
+      "AVGO",
+      "BDC",
+      "BE",
+      "CAT",
+      "CC",
+      "CDNS",
+      "CE",
+      "CIEN",
+      "CLFD",
+      "COHR",
+      "CSCO",
+      "CVX",
+      "DELL",
+      "EME",
+      "ENTG",
+      "EOSE",
+      "ESI",
+      "ETN",
+      "ETR",
+      "EWZ",
+      "FN",
+      "GLW",
+      "HPE",
+      "HUBB",
+      "INTC",
+      "J",
+      "KLAC",
+      "LITE",
+      "MKSI",
+      "MOD",
+      "MRVL",
+      "MU",
+      "NEE",
+      "NVDA",
+      "NVT",
+      "P",
+      "PLTR",
+      "PSTG",
+      "PWR",
+      "Q",
+      "QCOM",
+      "SLV",
+      "SMCI",
+      "SNPS",
+      "TT",
+      "VRT",
+      "VST",
+      "XOM"
+    ],
+    "foreign_listed": [
+      "000660.KS",
+      "4062.T",
+      "4063.T",
+      "4186.T",
+      "4203.T",
+      "6146.T",
+      "6526.T",
+      "6857.T",
+      "AKE.PA",
+      "BESI.AS",
+      "HEN3.DE",
+      "HO.PA",
+      "IFX.DE",
+      "MRN.PA",
+      "PRY.MI",
+      "SOI.PA",
+      "SU.PA"
+    ]
+  },
+  "tickers": [
+    {
+      "ticker": "000660.KS",
+      "company": "SK hynix",
+      "theme": "Whole Rack",
+      "current_setup": "Buyable",
+      "current_score": 95,
+      "baskets": [],
+      "us_listed": false,
+      "exchange_country": "S.Korea",
+      "price_note": "Non-US listing; Massive/Polygon US feed may not cover. Map to ADR or skip."
+    },
+    {
+      "ticker": "4062.T",
+      "company": "Ibiden",
+      "theme": "Semicon Architecture",
+      "current_setup": "Buyable",
+      "current_score": 95,
+      "baskets": [],
+      "us_listed": false,
+      "exchange_country": "Japan",
+      "price_note": "Non-US listing; Massive/Polygon US feed may not cover. Map to ADR or skip."
+    },
+    {
+      "ticker": "4063.T",
+      "company": "Shin-Etsu Chemical",
+      "theme": "Chemicals & Materials",
+      "current_setup": "Buyable",
+      "current_score": 80,
+      "baskets": [
+        "25"
+      ],
+      "us_listed": false,
+      "exchange_country": "Japan",
+      "price_note": "Non-US listing; Massive/Polygon US feed may not cover. Map to ADR or skip."
+    },
+    {
+      "ticker": "4186.T",
+      "company": "TOK",
+      "theme": "Chemicals & Materials",
+      "current_setup": "Constructive",
+      "current_score": 70,
+      "baskets": [],
+      "us_listed": false,
+      "exchange_country": "Japan",
+      "price_note": "Non-US listing; Massive/Polygon US feed may not cover. Map to ADR or skip."
+    },
+    {
+      "ticker": "4203.T",
+      "company": "Sumitomo Bakelite",
+      "theme": "Chemicals & Materials",
+      "current_setup": "Constructive",
+      "current_score": 75,
+      "baskets": [],
+      "us_listed": false,
+      "exchange_country": "Japan",
+      "price_note": "Non-US listing; Massive/Polygon US feed may not cover. Map to ADR or skip."
+    },
+    {
+      "ticker": "6146.T",
+      "company": "Disco Corp",
+      "theme": "Semicon Architecture",
+      "current_setup": "Buyable",
+      "current_score": 90,
+      "baskets": [],
+      "us_listed": false,
+      "exchange_country": "Japan",
+      "price_note": "Non-US listing; Massive/Polygon US feed may not cover. Map to ADR or skip."
+    },
+    {
+      "ticker": "6526.T",
+      "company": "Socionext",
+      "theme": "Semicon Architecture",
+      "current_setup": "Improving",
+      "current_score": 35,
+      "baskets": [],
+      "us_listed": false,
+      "exchange_country": "Japan",
+      "price_note": "Non-US listing; Massive/Polygon US feed may not cover. Map to ADR or skip."
+    },
+    {
+      "ticker": "6857.T",
+      "company": "Advantest",
+      "theme": "Semicon Architecture",
+      "current_setup": "Buyable",
+      "current_score": 85,
+      "baskets": [
+        "25"
+      ],
+      "us_listed": false,
+      "exchange_country": "Japan",
+      "price_note": "Non-US listing; Massive/Polygon US feed may not cover. Map to ADR or skip."
+    },
+    {
+      "ticker": "AKE.PA",
+      "company": "Arkema",
+      "theme": "Chemicals & Materials",
+      "current_setup": "Pullback",
+      "current_score": 55,
+      "baskets": [],
+      "us_listed": false,
+      "exchange_country": "France",
+      "price_note": "Non-US listing; Massive/Polygon US feed may not cover. Map to ADR or skip."
+    },
+    {
+      "ticker": "ALAB",
+      "company": "Astera Labs",
+      "theme": "Optical & Interconnects",
+      "current_setup": "Buyable",
+      "current_score": 95,
+      "baskets": [
+        "25"
+      ],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "AMD",
+      "company": "AMD",
+      "theme": "Whole Rack",
+      "current_setup": "Buyable",
+      "current_score": 95,
+      "baskets": [
+        "25"
+      ],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "AMKR",
+      "company": "Amkor Technology",
+      "theme": "Semicon Architecture",
+      "current_setup": "Buyable",
+      "current_score": 100,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "ANET",
+      "company": "Arista Networks",
+      "theme": "Whole Rack",
+      "current_setup": "Buyable",
+      "current_score": 95,
+      "baskets": [
+        "25"
+      ],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "ARM",
+      "company": "Arm Holdings",
+      "theme": "Semicon Architecture",
+      "current_setup": "Buyable",
+      "current_score": 100,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "ASML",
+      "company": "ASML",
+      "theme": "Semicon Architecture",
+      "current_setup": "Buyable",
+      "current_score": 100,
+      "baskets": [
+        "25"
+      ],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "AVGO",
+      "company": "Broadcom",
+      "theme": "Semicon Architecture",
+      "current_setup": "Pullback",
+      "current_score": 50,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "BDC",
+      "company": "Belden",
+      "theme": "Optical & Interconnects",
+      "current_setup": "Weakening",
+      "current_score": 40,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "BE",
+      "company": "Bloom Energy",
+      "theme": "Energy & Infrastructure",
+      "current_setup": "Constructive",
+      "current_score": 65,
+      "baskets": [
+        "25"
+      ],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "BESI.AS",
+      "company": "BE Semiconductor",
+      "theme": "Semicon Architecture",
+      "current_setup": "Extended",
+      "current_score": 90,
+      "baskets": [],
+      "us_listed": false,
+      "exchange_country": "Netherlands",
+      "price_note": "Non-US listing; Massive/Polygon US feed may not cover. Map to ADR or skip."
+    },
+    {
+      "ticker": "CAT",
+      "company": "Caterpillar",
+      "theme": "Energy & Infrastructure",
+      "current_setup": "Buyable",
+      "current_score": 95,
+      "baskets": [
+        "10",
+        "25"
+      ],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "CC",
+      "company": "Chemours",
+      "theme": "Chemicals & Materials",
+      "current_setup": "Weakening",
+      "current_score": 55,
+      "baskets": [
+        "10",
+        "25"
+      ],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "CDNS",
+      "company": "Cadence Design",
+      "theme": "Semicon Architecture",
+      "current_setup": "Buyable",
+      "current_score": 95,
+      "baskets": [
+        "25"
+      ],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "CE",
+      "company": "Celanese",
+      "theme": "Chemicals & Materials",
+      "current_setup": "Weakening",
+      "current_score": 35,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "CIEN",
+      "company": "Ciena",
+      "theme": "Optical & Interconnects",
+      "current_setup": "Pullback",
+      "current_score": 50,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "CLFD",
+      "company": "Clearfield",
+      "theme": "Optical & Interconnects",
+      "current_setup": "Constructive",
+      "current_score": 65,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "COHR",
+      "company": "Coherent",
+      "theme": "Optical & Interconnects",
+      "current_setup": "Buyable",
+      "current_score": 80,
+      "baskets": [
+        "25"
+      ],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "CSCO",
+      "company": "Cisco Systems",
+      "theme": "Whole Rack",
+      "current_setup": "Buyable",
+      "current_score": 95,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "CVX",
+      "company": "Chevron",
+      "theme": "Energy & Infrastructure",
+      "current_setup": "Weakening",
+      "current_score": 45,
+      "baskets": [
+        "25"
+      ],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "DELL",
+      "company": "Dell Technologies",
+      "theme": "Whole Rack",
+      "current_setup": "Buyable",
+      "current_score": 95,
+      "baskets": [
+        "10",
+        "25"
+      ],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "EME",
+      "company": "EMCOR Group",
+      "theme": "Energy & Infrastructure",
+      "current_setup": "Weakening",
+      "current_score": 50,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "ENTG",
+      "company": "Entegris",
+      "theme": "Chemicals & Materials",
+      "current_setup": "Buyable",
+      "current_score": 95,
+      "baskets": [
+        "25"
+      ],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "EOSE",
+      "company": "Eos Energy",
+      "theme": "Energy & Infrastructure",
+      "current_setup": "Avoid",
+      "current_score": 30,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "ESI",
+      "company": "Element Solutions",
+      "theme": "Chemicals & Materials",
+      "current_setup": "Buyable",
+      "current_score": 80,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "ETN",
+      "company": "Eaton",
+      "theme": "Energy & Infrastructure",
+      "current_setup": "Weakening",
+      "current_score": 50,
+      "baskets": [
+        "10",
+        "25"
+      ],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "ETR",
+      "company": "Entergy",
+      "theme": "Energy & Infrastructure",
+      "current_setup": "Constructive",
+      "current_score": 65,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "EWZ",
+      "company": "iShares Brazil",
+      "theme": "Macro Satellites",
+      "current_setup": "Weakening",
+      "current_score": 35,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "FN",
+      "company": "Fabrinet",
+      "theme": "Optical & Interconnects",
+      "current_setup": "Pullback",
+      "current_score": 50,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "GLW",
+      "company": "Corning",
+      "theme": "Optical & Interconnects",
+      "current_setup": "Constructive",
+      "current_score": 65,
+      "baskets": [
+        "10",
+        "25"
+      ],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "HEN3.DE",
+      "company": "Henkel",
+      "theme": "Chemicals & Materials",
+      "current_setup": "Constructive",
+      "current_score": 75,
+      "baskets": [],
+      "us_listed": false,
+      "exchange_country": "Germany",
+      "price_note": "Non-US listing; Massive/Polygon US feed may not cover. Map to ADR or skip."
+    },
+    {
+      "ticker": "HO.PA",
+      "company": "Thales",
+      "theme": "Semicon Architecture",
+      "current_setup": "Weakening",
+      "current_score": 40,
+      "baskets": [],
+      "us_listed": false,
+      "exchange_country": "France",
+      "price_note": "Non-US listing; Massive/Polygon US feed may not cover. Map to ADR or skip."
+    },
+    {
+      "ticker": "HPE",
+      "company": "HPE",
+      "theme": "Whole Rack",
+      "current_setup": "Buyable",
+      "current_score": 95,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "HUBB",
+      "company": "Hubbell",
+      "theme": "Energy & Infrastructure",
+      "current_setup": "Weakening",
+      "current_score": 45,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "IFX.DE",
+      "company": "Infineon",
+      "theme": "Semicon Architecture",
+      "current_setup": "Buyable",
+      "current_score": 95,
+      "baskets": [
+        "25"
+      ],
+      "us_listed": false,
+      "exchange_country": "Germany",
+      "price_note": "Non-US listing; Massive/Polygon US feed may not cover. Map to ADR or skip."
+    },
+    {
+      "ticker": "INTC",
+      "company": "Intel",
+      "theme": "Whole Rack",
+      "current_setup": "Buyable",
+      "current_score": 100,
+      "baskets": [
+        "10",
+        "25"
+      ],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "J",
+      "company": "Jacobs Solutions",
+      "theme": "Energy & Infrastructure",
+      "current_setup": "Weakening",
+      "current_score": 45,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "KLAC",
+      "company": "KLA Corp",
+      "theme": "Semicon Architecture",
+      "current_setup": "Extended",
+      "current_score": 85,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "LITE",
+      "company": "Lumentum",
+      "theme": "Optical & Interconnects",
+      "current_setup": "Buyable",
+      "current_score": 80,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "MKSI",
+      "company": "MKS Instruments",
+      "theme": "Chemicals & Materials",
+      "current_setup": "Buyable",
+      "current_score": 95,
+      "baskets": [
+        "25"
+      ],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "MOD",
+      "company": "Modine Mfg",
+      "theme": "Energy & Infrastructure",
+      "current_setup": "Buyable",
+      "current_score": 80,
+      "baskets": [
+        "10",
+        "25"
+      ],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "MRN.PA",
+      "company": "Mersen",
+      "theme": "Chemicals & Materials",
+      "current_setup": "Buyable",
+      "current_score": 85,
+      "baskets": [],
+      "us_listed": false,
+      "exchange_country": "France",
+      "price_note": "Non-US listing; Massive/Polygon US feed may not cover. Map to ADR or skip."
+    },
+    {
+      "ticker": "MRVL",
+      "company": "Marvell Technology",
+      "theme": "Semicon Architecture",
+      "current_setup": "Buyable",
+      "current_score": 95,
+      "baskets": [
+        "10",
+        "25"
+      ],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "MU",
+      "company": "Micron Technology",
+      "theme": "Whole Rack",
+      "current_setup": "Buyable",
+      "current_score": 95,
+      "baskets": [
+        "10",
+        "25"
+      ],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "NEE",
+      "company": "NextEra Energy",
+      "theme": "Energy & Infrastructure",
+      "current_setup": "Avoid",
+      "current_score": 30,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "NVDA",
+      "company": "NVIDIA",
+      "theme": "Semicon Architecture",
+      "current_setup": "Weakening",
+      "current_score": 50,
+      "baskets": [
+        "10",
+        "25"
+      ],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "NVT",
+      "company": "nVent Electric",
+      "theme": "Energy & Infrastructure",
+      "current_setup": "Constructive",
+      "current_score": 75,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "P",
+      "company": "(not in current 100-universe)",
+      "theme": null,
+      "current_setup": null,
+      "current_score": null,
+      "baskets": [
+        "25"
+      ],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "PLTR",
+      "company": "Palantir",
+      "theme": "Macro Satellites",
+      "current_setup": "Avoid",
+      "current_score": 0,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "PRY.MI",
+      "company": "Prysmian",
+      "theme": "Optical & Interconnects",
+      "current_setup": "Constructive",
+      "current_score": 75,
+      "baskets": [],
+      "us_listed": false,
+      "exchange_country": "Italy",
+      "price_note": "Non-US listing; Massive/Polygon US feed may not cover. Map to ADR or skip."
+    },
+    {
+      "ticker": "PSTG",
+      "company": "Pure Storage",
+      "theme": "Whole Rack",
+      "current_setup": "Avoid",
+      "current_score": 30,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "PWR",
+      "company": "Quanta Services",
+      "theme": "Energy & Infrastructure",
+      "current_setup": "Constructive",
+      "current_score": 75,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "Q",
+      "company": "Qnity Electronics",
+      "theme": "Chemicals & Materials",
+      "current_setup": "Improving",
+      "current_score": 45,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "QCOM",
+      "company": "Qualcomm",
+      "theme": "Semicon Architecture",
+      "current_setup": "Constructive",
+      "current_score": 75,
+      "baskets": [
+        "25"
+      ],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "SLV",
+      "company": "iShares Silver",
+      "theme": "Macro Satellites",
+      "current_setup": "Avoid",
+      "current_score": 30,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "SMCI",
+      "company": "Super Micro",
+      "theme": "Whole Rack",
+      "current_setup": "Avoid",
+      "current_score": 15,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "SNPS",
+      "company": "Synopsys",
+      "theme": "Semicon Architecture",
+      "current_setup": "Avoid",
+      "current_score": 20,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "SOI.PA",
+      "company": "Soitec",
+      "theme": "Semicon Architecture",
+      "current_setup": "Constructive",
+      "current_score": 65,
+      "baskets": [],
+      "us_listed": false,
+      "exchange_country": "France",
+      "price_note": "Non-US listing; Massive/Polygon US feed may not cover. Map to ADR or skip."
+    },
+    {
+      "ticker": "SU.PA",
+      "company": "Schneider Electric",
+      "theme": "Whole Rack",
+      "current_setup": "Weakening",
+      "current_score": 55,
+      "baskets": [],
+      "us_listed": false,
+      "exchange_country": "France",
+      "price_note": "Non-US listing; Massive/Polygon US feed may not cover. Map to ADR or skip."
+    },
+    {
+      "ticker": "TT",
+      "company": "Trane Technologies",
+      "theme": "Energy & Infrastructure",
+      "current_setup": "Weakening",
+      "current_score": 55,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "VRT",
+      "company": "Vertiv",
+      "theme": "Optical & Interconnects",
+      "current_setup": "Pullback",
+      "current_score": 50,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "VST",
+      "company": "Vistra",
+      "theme": "Energy & Infrastructure",
+      "current_setup": "Avoid",
+      "current_score": 15,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    },
+    {
+      "ticker": "XOM",
+      "company": "Exxon Mobil",
+      "theme": "Energy & Infrastructure",
+      "current_setup": "Avoid",
+      "current_score": 30,
+      "baskets": [],
+      "us_listed": true,
+      "exchange_country": "US",
+      "price_note": ""
+    }
+  ]
+}
