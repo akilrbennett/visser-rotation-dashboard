@@ -5,58 +5,247 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>AI Macro Nexus — Rotation</title>
 <style>
-  /* Minimal baseline only — Task 5 (ui-ux-pro-max) owns the real visual design.
-     Do NOT remove the data-testid attributes the tests rely on. */
-  :root { --in:#1a7f37; --out:#cf222e; --watch:#9a6700; --bg:#0d1117; --fg:#e6edf3; --muted:#8b949e; }
-  * { box-sizing: border-box; }
-  body { margin:0; font-family: system-ui, sans-serif; background:var(--bg); color:var(--fg); }
-  main { max-width: 1100px; margin: 0 auto; padding: 16px; }
-  .lane h2 { margin: 8px 0; }
-  .lane[data-lane="in"] { color: var(--in); }
-  .lane[data-lane="out"] { color: var(--out); }
-  .lane[data-lane="watch"] { color: var(--watch); }
-  .name { color: var(--fg); border-bottom: 1px solid #30363d; padding: 6px 0; }
-  .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
-  table { width:100%; border-collapse: collapse; }
-  th, td { text-align:left; padding:4px 8px; border-bottom:1px solid #30363d; font-size:14px; }
-  .neg { color: var(--out); } .pos { color: var(--in); }
-  .hidden { display:none; }
+  /* Self-contained, no external/CDN runtime deps. Dark "OLED" terminal-editorial.
+     Fonts: prefer locally-installed Fira, else system stack — no network fetch. */
+  :root {
+    --bg:#020617; --surface:#0b1322; --surface-2:#0f172a; --elev:#111d33;
+    --border:#1e2a40; --border-strong:#334155;
+    --fg:#f8fafc; --muted:#9aa7b8; --muted-2:#6b7a90;
+    --in:#3fb950; --in-bg:rgba(63,185,80,.09); --in-bd:rgba(63,185,80,.32);
+    --out:#f85149; --out-bg:rgba(248,81,73,.09); --out-bd:rgba(248,81,73,.32);
+    --watch:#e3b341; --watch-bg:rgba(227,179,65,.09); --watch-bd:rgba(227,179,65,.30);
+    --accent:#3fb950;
+    --mono:ui-monospace,"SF Mono","Fira Code",Menlo,Consolas,"Liberation Mono",monospace;
+    --sans:system-ui,-apple-system,"Segoe UI","Fira Sans",Roboto,Helvetica,Arial,sans-serif;
+    --r:12px; --r-sm:8px; --sp:16px;
+  }
+  * { box-sizing:border-box; }
+  html { -webkit-text-size-adjust:100%; }
+  body {
+    margin:0; background:var(--bg); color:var(--fg);
+    font-family:var(--sans); font-size:16px; line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono { font-family:var(--mono); font-variant-numeric:tabular-nums; }
+  .muted { color:var(--muted); }
+  .hidden { display:none !important; }
+  main { max-width:1200px; margin:0 auto; padding:20px 18px 64px; }
+  a { color:var(--accent); }
+  h1,h2 { line-height:1.2; }
+
+  /* ---------- Header ---------- */
+  header.top { border-bottom:1px solid var(--border); padding-bottom:18px; margin-bottom:26px; }
+  .brandrow { display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 16px; }
+  header.top h1 {
+    font-family:var(--mono); font-size:1.55rem; font-weight:700; margin:0;
+    letter-spacing:-.01em;
+  }
+  header.top h1 .accent { color:var(--accent); }
+  .pill {
+    display:inline-flex; align-items:center; gap:6px; font-size:.72rem; font-weight:600;
+    padding:4px 10px; border-radius:999px; border:1px solid var(--in-bd);
+    color:var(--in); background:var(--in-bg); letter-spacing:.02em; text-transform:uppercase;
+    white-space:nowrap;
+  }
+  .meta-line { display:flex; flex-wrap:wrap; gap:6px 18px; margin-top:10px; font-size:.86rem; }
+  .meta-line .k { color:var(--muted-2); }
+  .meta-line .v { color:var(--fg); font-family:var(--mono); }
+  .narrative { margin:14px 0 0; color:var(--muted); font-size:.92rem; max-width:78ch; }
+
+  /* ---------- Section scaffolding ---------- */
+  section { margin:34px 0 0; }
+  .sec-head { display:flex; align-items:baseline; gap:12px; margin:0 0 14px; }
+  .sec-head h2 { font-size:1.06rem; font-weight:650; margin:0; letter-spacing:.01em; }
+  .sec-head .hint { color:var(--muted-2); font-size:.8rem; }
+
+  /* ---------- Rotation hero (3 lanes) ---------- */
+  .lanes { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  .lane { background:var(--surface); border:1px solid var(--border); border-radius:var(--r); overflow:hidden; display:flex; flex-direction:column; }
+  .lane > h2 {
+    display:flex; align-items:center; gap:9px; margin:0; padding:12px 14px;
+    font-size:.82rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em;
+    border-bottom:1px solid var(--border);
+  }
+  .lane > h2 svg { width:16px; height:16px; flex:none; }
+  .lane > h2 .cnt { margin-left:auto; font-family:var(--mono); font-size:.82rem; opacity:.85; }
+  .lane[data-lane="in"]    > h2 { color:var(--in);    background:var(--in-bg); }
+  .lane[data-lane="out"]   > h2 { color:var(--out);   background:var(--out-bg); }
+  .lane[data-lane="watch"] > h2 { color:var(--watch); background:var(--watch-bg); }
+  .lane-body { padding:6px 8px; display:flex; flex-direction:column; gap:6px; }
+
+  .name { background:var(--surface-2); border:1px solid var(--border); border-radius:var(--r-sm); padding:9px 11px; }
+  .name .nm-head { display:flex; align-items:baseline; gap:8px; }
+  .name .nm-tkr { font-family:var(--mono); font-weight:700; font-size:.92rem; }
+  .name .nm-co { color:var(--muted); font-size:.82rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .name .nm-px { margin-left:auto; font-family:var(--mono); font-size:.9rem; white-space:nowrap; }
+  .name .nm-chg { font-family:var(--mono); font-size:.78rem; white-space:nowrap; }
+  .name .nm-sub { display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin-top:6px; font-size:.76rem; color:var(--muted); }
+  .tag { font-size:.68rem; padding:2px 7px; border-radius:999px; border:1px solid var(--border-strong); color:var(--muted); white-space:nowrap; }
+  .tag.reason { border-color:var(--watch-bd); color:var(--watch); }
+  .transition { font-family:var(--mono); font-size:.74rem; color:var(--fg); }
+  .delta.pos { color:var(--in); } .delta.neg { color:var(--out); }
+  .pos { color:var(--in); } .neg { color:var(--out); }
+
+  /* ---------- Themes strip ---------- */
+  .themes { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+  .theme { background:var(--surface); border:1px solid var(--border); border-radius:var(--r); padding:13px 14px; }
+  .theme .t-name { font-weight:600; font-size:.92rem; }
+  .theme .t-score { font-family:var(--mono); font-size:1.5rem; font-weight:700; margin-top:6px; display:flex; align-items:baseline; gap:8px; }
+  .theme .t-score .d { font-size:.82rem; font-weight:600; }
+  .theme .t-meta { margin-top:8px; font-size:.76rem; color:var(--muted); display:flex; flex-wrap:wrap; gap:4px 12px; }
+  .status { font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em; padding:2px 8px; border-radius:999px; }
+  .status[data-s="Leading"]       { color:var(--in);    background:var(--in-bg);    border:1px solid var(--in-bd); }
+  .status[data-s="Constructive"]  { color:var(--in);    background:var(--in-bg);    border:1px solid var(--in-bd); }
+  .status[data-s="Weakening"]     { color:var(--watch); background:var(--watch-bg); border:1px solid var(--watch-bd); }
+  .status[data-s="Breaking Down"] { color:var(--out);   background:var(--out-bg);   border:1px solid var(--out-bd); }
+  .sparkbar { height:4px; border-radius:999px; background:var(--border); margin-top:10px; overflow:hidden; }
+  .sparkbar > i { display:block; height:100%; background:var(--accent); }
+
+  /* ---------- Action queue ---------- */
+  .aq { display:flex; flex-direction:column; gap:6px; }
+  .aq .row { display:flex; align-items:center; gap:10px; flex-wrap:wrap; background:var(--surface); border:1px solid var(--border); border-radius:var(--r-sm); padding:9px 12px; }
+  .aq .rank { font-family:var(--mono); color:var(--muted-2); font-size:.78rem; min-width:1.4em; }
+  .badge { font-size:.66rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em; padding:2px 7px; border-radius:5px; }
+  .badge[data-p="High"]   { color:var(--in);    background:var(--in-bg);    border:1px solid var(--in-bd); }
+  .badge[data-p="Medium"] { color:var(--watch); background:var(--watch-bg); border:1px solid var(--watch-bd); }
+  .aq .tkr { font-family:var(--mono); font-weight:700; }
+  .aq .co { color:var(--muted); font-size:.85rem; }
+  .aq .act { margin-left:auto; color:var(--fg); font-size:.82rem; }
+  .aq .sc { font-family:var(--mono); color:var(--muted); font-size:.82rem; }
+
+  /* ---------- Baskets ---------- */
+  .baskets { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .basket-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--r); padding:6px 8px; }
+  .basket-card .b-row { display:flex; align-items:center; gap:8px; padding:7px 8px; border-bottom:1px solid var(--border); font-size:.85rem; }
+  .basket-card .b-row:last-child { border-bottom:0; }
+  .basket-card .b-tkr { font-family:var(--mono); font-weight:700; min-width:5.5em; }
+  .basket-card .b-co { color:var(--muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .basket-card .b-px { margin-left:auto; font-family:var(--mono); }
+  .basket-sub { font-size:.78rem; color:var(--muted-2); padding:8px; }
+
+  /* ---------- Filters ---------- */
+  .filters { display:flex; flex-wrap:wrap; gap:14px 22px; margin-bottom:12px; }
+  .fgroup { display:flex; align-items:center; gap:7px; flex-wrap:wrap; }
+  .flabel { color:var(--muted-2); font-size:.74rem; text-transform:uppercase; letter-spacing:.05em; }
+  .chip {
+    font:inherit; font-size:.78rem; color:var(--muted); background:var(--surface-2);
+    border:1px solid var(--border-strong); border-radius:999px; padding:5px 12px; cursor:pointer;
+    transition:background .16s ease, color .16s ease, border-color .16s ease; min-height:30px;
+  }
+  .chip:hover { color:var(--fg); border-color:var(--muted); }
+  .chip.active { color:var(--bg); background:var(--accent); border-color:var(--accent); font-weight:650; }
+
+  /* ---------- All-names table ---------- */
+  .table-wrap { overflow-x:auto; border:1px solid var(--border); border-radius:var(--r); }
+  table { width:100%; border-collapse:collapse; min-width:680px; }
+  thead th {
+    position:sticky; top:0; background:var(--elev); text-align:left; font-size:.74rem;
+    text-transform:uppercase; letter-spacing:.04em; color:var(--muted); font-weight:650;
+    padding:10px 12px; border-bottom:1px solid var(--border-strong); white-space:nowrap;
+  }
+  th[data-sort] { cursor:pointer; user-select:none; }
+  th[data-sort]:hover { color:var(--fg); }
+  th[data-sort]::after { content:"⇕"; opacity:.4; margin-left:5px; font-size:.8em; }
+  th[aria-sort="ascending"]::after { content:"↑"; opacity:1; }
+  th[aria-sort="descending"]::after { content:"↓"; opacity:1; }
+  tbody td { padding:8px 12px; border-bottom:1px solid var(--border); font-size:.85rem; white-space:nowrap; }
+  tbody tr:hover td { background:var(--surface); }
+  td.num { font-family:var(--mono); font-variant-numeric:tabular-nums; text-align:right; }
+  td.tkr { font-family:var(--mono); font-weight:700; }
+  tr[data-unmapped="true"] { opacity:.7; }
+  tr[data-unmapped="true"] .warn { color:var(--watch); }
+  .setup-cell[data-buyable="true"] { color:var(--in); }
+
+  /* ---------- Footer ---------- */
+  footer { margin-top:42px; padding-top:18px; border-top:1px solid var(--border); color:var(--muted-2); font-size:.78rem; }
+  footer p { margin:5px 0; }
+  footer .disc { color:var(--muted); }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:900px) {
+    .lanes { grid-template-columns:1fr; }
+    .themes { grid-template-columns:1fr 1fr; }
+    .baskets { grid-template-columns:1fr; }
+  }
+  @media (max-width:560px) {
+    main { padding:16px 12px 48px; }
+    header.top h1 { font-size:1.3rem; }
+    .themes { grid-template-columns:1fr; }
+    .aq .act { margin-left:0; width:100%; }
+  }
+  :focus-visible { outline:2px solid var(--accent); outline-offset:2px; border-radius:4px; }
+  @media (prefers-reduced-motion:reduce) { * { transition:none !important; } }
 </style>
 </head>
 <body>
 <main>
-  <header>
-    <h1>AI Macro Nexus — Rotation</h1>
-    <p data-testid="week-stamp"></p>
-    <p data-testid="model-tone"></p>
-    <p data-testid="narrative"></p>
-    <p data-testid="price-stamp"></p>
+  <header class="top">
+    <div class="brandrow">
+      <h1><span class="accent">AI Macro Nexus</span> — Rotation</h1>
+      <span class="pill" data-testid="model-tone"></span>
+    </div>
+    <div class="meta-line">
+      <span><span class="k">Window</span> <span class="v" data-testid="week-stamp"></span></span>
+      <span><span class="k">Prices</span> <span class="v" data-testid="price-stamp"></span></span>
+    </div>
+    <p class="narrative" data-testid="narrative"></p>
   </header>
 
   <section aria-label="Rotation">
-    <div class="lane" data-lane="in"><h2>Rotating IN <span data-testid="count-in"></span></h2><div data-testid="lane-in"></div></div>
-    <div class="lane" data-lane="out"><h2>Rotating OUT <span data-testid="count-out"></span></h2><div data-testid="lane-out"></div></div>
-    <div class="lane" data-lane="watch"><h2>Watch <span data-testid="count-watch"></span></h2><div data-testid="lane-watch"></div></div>
+    <div class="sec-head"><h2>Rotation this week</h2><span class="hint">setup transitions vs. prior week</span></div>
+    <div class="lanes">
+      <div class="lane" data-lane="in">
+        <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>Rotating in<span class="cnt" data-testid="count-in"></span></h2>
+        <div class="lane-body" data-testid="lane-in"></div>
+      </div>
+      <div class="lane" data-lane="out">
+        <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg>Rotating out<span class="cnt" data-testid="count-out"></span></h2>
+        <div class="lane-body" data-testid="lane-out"></div>
+      </div>
+      <div class="lane" data-lane="watch">
+        <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>Watch<span class="cnt" data-testid="count-watch"></span></h2>
+        <div class="lane-body" data-testid="lane-watch"></div>
+      </div>
+    </div>
   </section>
 
-  <section aria-label="Themes"><h2>Themes — week over week</h2><div data-testid="themes"></div></section>
-  <section aria-label="Action queue"><h2>This week's action queue</h2><div data-testid="action-queue"></div></section>
-  <section aria-label="Baskets">
-    <h2>Conviction baskets</h2>
-    <div data-testid="basket-10"></div>
-    <div data-testid="basket-25"></div>
+  <section aria-label="Themes">
+    <div class="sec-head"><h2>Themes — week over week</h2><span class="hint">every theme cooled this week</span></div>
+    <div class="themes" data-testid="themes"></div>
   </section>
+
+  <section aria-label="Action queue">
+    <div class="sec-head"><h2>This week's action queue</h2><span class="hint">ranked setups</span></div>
+    <div class="aq" data-testid="action-queue"></div>
+  </section>
+
+  <section aria-label="Baskets">
+    <div class="sec-head"><h2>Conviction baskets</h2><span class="hint">current vs. prior setup</span></div>
+    <div class="baskets">
+      <div><div class="sec-head"><h2 style="font-size:.9rem">10-name</h2></div><div class="basket-card" data-testid="basket-10"></div></div>
+      <div><div class="sec-head"><h2 style="font-size:.9rem">25-name</h2></div><div class="basket-card" data-testid="basket-25"></div></div>
+    </div>
+  </section>
+
   <section aria-label="All names">
-    <h2>All names</h2>
-    <div data-testid="filters"></div>
-    <table><thead><tr><th>Ticker</th><th>Company</th><th>Theme</th><th>Setup</th><th>Score</th><th>Basket</th><th>Close</th></tr></thead>
-    <tbody data-testid="ticker-rows"></tbody></table>
+    <div class="sec-head"><h2>All names</h2><span class="hint">71 tracked · sort &amp; filter</span></div>
+    <div class="filters" data-testid="filters"></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th data-sort="ticker">Ticker</th><th>Company</th><th>Theme</th>
+          <th>Setup</th><th data-sort="score" class="num">Score</th><th>Basket</th><th class="num">Close</th>
+        </tr></thead>
+        <tbody data-testid="ticker-rows"></tbody>
+      </table>
+    </div>
   </section>
 
   <footer>
-    <p data-testid="disclaimer"></p>
+    <p class="disc" data-testid="disclaimer"></p>
     <p data-testid="cadences"></p>
     <p data-testid="generated"></p>
+    <p>Price data: Massive / Polygon (US close). Foreign listings show “—” when the US feed doesn’t cover them.</p>
   </footer>
 </main>
 
@@ -78,42 +267,52 @@ function bucketize(signalChanges) {
   return { in: lane(IN_BUCKETS), out: lane(OUT_BUCKETS), watch: lane(WATCH_BUCKETS) };
 }
 
-function priceFor(ticker, prices) {
-  return prices && prices.quotes ? prices.quotes[ticker] : undefined;
-}
+function priceFor(ticker, prices) { return prices && prices.quotes ? prices.quotes[ticker] : undefined; }
 function fmtClose(q) { return (q && typeof q.close === 'number') ? '$' + q.close.toFixed(2) : '—'; }
 function fmtChange(q) {
   if (!q || typeof q.change_pct !== 'number') return '';
   return (q.change_pct >= 0 ? '+' : '') + q.change_pct.toFixed(2) + '%';
 }
+function fmtDelta(v) { return (typeof v === 'number') ? (v > 0 ? '+' + v : '' + v) : ''; }
 function isUnmapped(t) { return t && (t.theme === null || t.current_setup === null); }
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
 
 // ---------- Rendering ----------
 const $ = (sel) => document.querySelector(sel);
 const el = (tag, props = {}, html) => { const e = document.createElement(tag); Object.assign(e, props); if (html != null) e.innerHTML = html; return e; };
 
 function renderHeader(meta, prices) {
-  $('[data-testid="week-stamp"]').textContent = `Week of ${meta.current_week} vs. ${meta.previous_week}`;
+  $('[data-testid="week-stamp"]').textContent = `${meta.current_week} vs. ${meta.previous_week}`;
   $('[data-testid="model-tone"]').textContent = meta.model_tone;
   $('[data-testid="narrative"]').textContent = (meta.research_context && meta.research_context.narrative) || '';
-  const stamp = prices && prices.as_of ? `Prices as of ${prices.as_of}` : 'Prices pending — first fetch runs after the next close';
-  $('[data-testid="price-stamp"]').textContent = stamp;
+  $('[data-testid="price-stamp"]').textContent = (prices && prices.as_of)
+    ? `as of ${prices.as_of}` : 'pending — first fetch after next close';
 }
 
-function nameCard(n, prices, bucketLabel) {
+function nameCard(n, prices, reason) {
   const q = priceFor(n.ticker, prices);
-  const chg = fmtChange(q);
-  const transition = n.prev_setup ? `${n.prev_setup} → ${n.current_setup}` : (n.current_setup || '');
-  const label = bucketLabel ? ` · ${bucketLabel}` : '';
+  const chgCls = q && typeof q.change_pct === 'number' ? (q.change_pct < 0 ? 'neg' : 'pos') : '';
+  const transition = n.prev_setup ? `${esc(n.prev_setup)} → ${esc(n.current_setup)}` : esc(n.current_setup || '');
+  const dlt = fmtDelta(n.score_change);
+  const dltCls = n.score_change > 0 ? 'pos' : (n.score_change < 0 ? 'neg' : '');
   return el('div', { className: 'name' }, `
-    <span class="mono"><strong>${n.ticker}</strong></span> · ${n.company} · <em>${n.theme || ''}</em>
-    · ${transition}${label}
-    · <span class="mono">${fmtClose(q)}</span> <span class="mono ${q && q.change_pct < 0 ? 'neg' : 'pos'}">${chg}</span>`);
+    <div class="nm-head">
+      <span class="nm-tkr">${esc(n.ticker)}</span>
+      <span class="nm-co">${esc(n.company)}</span>
+      <span class="nm-px">${fmtClose(q)}</span>
+      <span class="nm-chg ${chgCls}">${fmtChange(q)}</span>
+    </div>
+    <div class="nm-sub">
+      <span class="tag">${esc(n.theme || '')}</span>
+      <span class="transition">${transition}</span>
+      ${typeof n.score === 'number' ? `<span class="mono">${n.score}</span>` : ''}
+      ${dlt ? `<span class="delta ${dltCls} mono">${dlt}</span>` : ''}
+      ${reason ? `<span class="tag reason">${esc(reason)}</span>` : ''}
+    </div>`);
 }
 
 function renderLane(testid, items, withLabel, prices) {
-  const host = $(`[data-testid="${testid}"]`);
-  host.innerHTML = '';
+  const host = $(`[data-testid="${testid}"]`); host.innerHTML = '';
   items.forEach((n) => host.appendChild(nameCard(n, prices, withLabel ? WATCH_LABELS[n._bucket] : '')));
 }
 
@@ -121,44 +320,127 @@ function renderThemes(themes) {
   const cur = themes[Object.keys(themes).sort().reverse()[0]] || [];
   const host = $('[data-testid="themes"]'); host.innerHTML = '';
   cur.forEach((t) => {
-    const d = typeof t.score_change === 'number' ? `${t.score_change > 0 ? '+' : ''}${t.score_change}` : '—';
-    host.appendChild(el('div', {}, `<strong>${t.theme}</strong> — ${t.score} (Δ ${d}) · ${t.pct_above_50d}% &gt;50d · ${t.status}`));
+    const dCls = t.score_change > 0 ? 'pos' : (t.score_change < 0 ? 'neg' : 'muted');
+    host.appendChild(el('div', { className: 'theme' }, `
+      <div class="t-name">${esc(t.theme)}</div>
+      <div class="t-score">${t.score}<span class="d ${dCls} mono">${fmtDelta(t.score_change) || '—'}</span></div>
+      <div class="sparkbar"><i style="width:${Math.max(0, Math.min(100, t.score))}%"></i></div>
+      <div class="t-meta">
+        <span>${t.pct_above_50d}% &gt; 50d</span>
+        <span class="status" data-s="${esc(t.status)}">${esc(t.status)}</span>
+        <span>▲ ${t.breakouts} / ▼ ${t.breakdowns}</span>
+      </div>`));
   });
 }
 
-function renderActionQueue(q) {
+function renderActionQueue(queue) {
   const host = $('[data-testid="action-queue"]'); host.innerHTML = '';
-  q.forEach((a) => host.appendChild(el('div', {}, `<span class="mono">${a.ticker}</span> · ${a.priority} · ${a.company} · ${a.setup} · ${a.suggested_action}`)));
+  queue.forEach((a, i) => host.appendChild(el('div', { className: 'row' }, `
+    <span class="rank mono">${i + 1}</span>
+    <span class="badge" data-p="${esc(a.priority)}">${esc(a.priority)}</span>
+    <span class="tkr">${esc(a.ticker)}</span>
+    <span class="co">${esc(a.company)}</span>
+    <span class="sc mono">${a.score}</span>
+    <span class="act">${esc(a.suggested_action)}</span>`)));
 }
 
 function renderBasket(testid, basket, prices) {
   const host = $(`[data-testid="${testid}"]`); host.innerHTML = '';
   basket.forEach((b) => {
     const q = priceFor(b.ticker, prices);
-    const company = b.company || '(unmapped)';
-    host.appendChild(el('div', { className: 'name' }, `<span class="mono">${b.ticker}</span> · ${company} · ${b.setup || 'n/a'} · <span class="mono">${fmtClose(q)}</span>`));
+    const prior = b.prev_setup ? ` <span class="muted">(was ${esc(b.prev_setup)})</span>` : '';
+    host.appendChild(el('div', { className: 'b-row' }, `
+      <span class="b-tkr">${esc(b.ticker)}</span>
+      <span class="b-co">${esc(b.company || '(unmapped)')}</span>
+      <span class="muted" style="font-size:.78rem">${esc(b.setup || 'n/a')}${prior}</span>
+      <span class="b-px">${fmtClose(q)}</span>`));
   });
 }
 
-function renderTickerTable(tickers, prices) {
+function renderTickerTable(tickers, prices, laneOf) {
   const tb = $('[data-testid="ticker-rows"]'); tb.innerHTML = '';
   tickers.forEach((t) => {
     const q = priceFor(t.ticker, prices);
     const tr = el('tr');
     if (isUnmapped(t)) tr.dataset.unmapped = 'true';
     tr.dataset.us = String(t.us_listed);
-    const company = isUnmapped(t) ? `${t.company} ⚠` : t.company;
-    tr.innerHTML = `<td class="mono">${t.ticker}</td><td>${company}</td><td>${t.theme || '—'}</td>
-      <td>${t.current_setup || '—'}</td><td>${t.current_score ?? '—'}</td><td>${(t.baskets||[]).join('/') || '—'}</td>
-      <td class="mono">${fmtClose(q)}</td>`;
+    tr.dataset.lane = laneOf[t.ticker] || '';
+    tr.dataset.ticker = t.ticker;
+    tr.dataset.score = (typeof t.current_score === 'number') ? String(t.current_score) : '';
+    const company = isUnmapped(t) ? `${esc(t.company)} <span class="warn" title="Not in current 100-universe — verify mapping">⚠</span>` : esc(t.company);
+    const buyable = (t.current_setup === 'Buyable');
+    tr.innerHTML = `<td class="tkr">${esc(t.ticker)}</td><td>${company}</td><td>${esc(t.theme || '—')}</td>
+      <td class="setup-cell" data-buyable="${buyable}">${esc(t.current_setup || '—')}</td>
+      <td class="num">${t.current_score ?? '—'}</td><td>${esc((t.baskets || []).join(' / ') || '—')}</td>
+      <td class="num">${fmtClose(q)}</td>`;
     tb.appendChild(tr);
   });
 }
 
 function renderFooter(meta) {
   $('[data-testid="disclaimer"]').textContent = meta.disclaimer;
-  $('[data-testid="cadences"]').textContent = `Rotation: ${meta.cadences.rotation_data} · Prices: ${meta.cadences.close_prices}`;
-  $('[data-testid="generated"]').textContent = `Generated ${meta.generated}`;
+  $('[data-testid="cadences"]').textContent = `Rotation data: ${meta.cadences.rotation_data} · Close prices: ${meta.cadences.close_prices}`;
+  $('[data-testid="generated"]').textContent = `Generated ${meta.generated} · source: ${meta.source_workbook}`;
+}
+
+// ---------- Filters + sort (full-names table) ----------
+function setupFilters() {
+  const host = $('[data-testid="filters"]'); host.innerHTML = '';
+  const state = { lane: 'all', us: 'all' };
+  const groups = [
+    { key: 'lane', label: 'Rotation', opts: [['all', 'All'], ['in', 'IN'], ['out', 'OUT'], ['watch', 'WATCH']] },
+    { key: 'us', label: 'Listing', opts: [['all', 'All'], ['true', 'US'], ['false', 'Foreign']] },
+  ];
+  const apply = () => {
+    document.querySelectorAll('[data-testid="ticker-rows"] tr').forEach((r) => {
+      const laneOk = state.lane === 'all' || r.dataset.lane === state.lane;
+      const usOk = state.us === 'all' || r.dataset.us === state.us;
+      r.classList.toggle('hidden', !(laneOk && usOk));
+    });
+  };
+  groups.forEach((g) => {
+    const wrap = el('div', { className: 'fgroup' });
+    wrap.appendChild(el('span', { className: 'flabel' }, g.label));
+    g.opts.forEach(([val, lab]) => {
+      const chip = el('button', { type: 'button', className: 'chip' + (state[g.key] === val ? ' active' : '') }, lab);
+      chip.dataset.group = g.key; chip.dataset.val = val;
+      chip.setAttribute('aria-pressed', String(state[g.key] === val));
+      chip.addEventListener('click', () => {
+        state[g.key] = val;
+        wrap.querySelectorAll('.chip').forEach((c) => {
+          const on = c.dataset.val === val; c.classList.toggle('active', on); c.setAttribute('aria-pressed', String(on));
+        });
+        apply();
+      });
+      wrap.appendChild(chip);
+    });
+    host.appendChild(wrap);
+  });
+}
+
+function setupSort() {
+  const tbody = $('[data-testid="ticker-rows"]');
+  const headers = document.querySelectorAll('th[data-sort]');
+  const cur = { key: null, dir: 1 };
+  headers.forEach((h) => {
+    h.tabIndex = 0;
+    const run = () => {
+      const key = h.dataset.sort;
+      cur.dir = cur.key === key ? -cur.dir : 1; cur.key = key;
+      headers.forEach((x) => x.removeAttribute('aria-sort'));
+      h.setAttribute('aria-sort', cur.dir === 1 ? 'ascending' : 'descending');
+      [...tbody.querySelectorAll('tr')].sort((a, b) => {
+        if (key === 'score') {
+          const av = a.dataset.score === '' ? -Infinity : +a.dataset.score;
+          const bv = b.dataset.score === '' ? -Infinity : +b.dataset.score;
+          return (av - bv) * cur.dir;
+        }
+        return String(a.dataset[key]).localeCompare(String(b.dataset[key])) * cur.dir;
+      }).forEach((r) => tbody.appendChild(r));
+    };
+    h.addEventListener('click', run);
+    h.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); run(); } });
+  });
 }
 
 async function loadJson(path) {
@@ -168,9 +450,14 @@ async function loadJson(path) {
 
 async function main() {
   const rotation = await loadJson('./data/rotation_latest.json');
-  const prices = await loadJson('./data/prices.json'); // may be null -> graceful "pending"
-  if (!rotation) { document.body.innerHTML = '<main><p>Failed to load rotation data.</p></main>'; return; }
+  const prices = await loadJson('./data/prices.json');
+  if (!rotation) { document.body.innerHTML = '<main><p style="color:#f85149">Failed to load rotation data.</p></main>'; return; }
   const lanes = bucketize(rotation.signal_changes);
+  const laneOf = {};
+  lanes.in.forEach((n) => { laneOf[n.ticker] = 'in'; });
+  lanes.out.forEach((n) => { laneOf[n.ticker] = 'out'; });
+  lanes.watch.forEach((n) => { laneOf[n.ticker] = 'watch'; });
+
   renderHeader(rotation.meta, prices);
   renderLane('lane-in', lanes.in, false, prices);
   renderLane('lane-out', lanes.out, false, prices);
@@ -182,7 +469,9 @@ async function main() {
   renderActionQueue(rotation.action_queue);
   renderBasket('basket-10', rotation.baskets['10_name'], prices);
   renderBasket('basket-25', rotation.baskets['25_name'], prices);
-  renderTickerTable(rotation.tickers, prices);
+  renderTickerTable(rotation.tickers, prices, laneOf);
+  setupFilters();
+  setupSort();
   renderFooter(rotation.meta);
 }
 
