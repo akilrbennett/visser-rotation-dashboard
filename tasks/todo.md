@@ -1,6 +1,6 @@
 # TODO — AI Macro Nexus Rotation Dashboard
 
-## Current phase: BUILD (spec + plan approved; executing tasks)
+## Current phase: COMPLETE — merged to main (292e0a7)
 
 ### Decisions LOCKED (2026-06-19, via brainstorming):
 1. **Price feed scope** = ALL shown names. Fetch all 54 US in one batch snapshot call (narrowing saves no API cost). Foreign per #2.
@@ -25,9 +25,12 @@
   - [x] Task 5: Visual design pass (ui-ux-pro-max) + filters/sort (13fd71e)
   - [x] Task 6: Daily cron workflow (521fb9f)
   - [x] Task 7: README + final verification
-- [ ] Independent code review (read-only subagent)
-- [ ] verification-before-completion skill
-- [ ] finishing-a-development-branch (merge build/dashboard → main)
+- [x] Independent code review (read-only subagent) — verdict Ship; 2 findings fixed (foreign exchange labels, table prev→current setup)
+- [x] Two further user-requested iterations: UX/UI polish pass (12 items: theme/basket filters, sticky nav, chart links, neutral WATCH deltas, status bars, a11y, mobile) + a 5-item tightening pass (nav landing, mid-word wrap, table fade, one-line nav, lane tooltips)
+- [x] verification-before-completion — full suite fresh-verified green each round
+- [x] finishing-a-development-branch — fast-forward merged build/dashboard → main (292e0a7); feature branch deleted
+
+## Status: shipped to main (12 build commits). Remaining = user deploy steps (see Follow-ups).
 
 ## Review
 
