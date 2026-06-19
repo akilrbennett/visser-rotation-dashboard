@@ -17,16 +17,49 @@
 - [x] Brainstorm + lock the three decisions with the user
 - [x] Write spec → `docs/superpowers/specs/2026-06-19-rotation-dashboard-design.md` (committed)
 - [x] Write detailed plan → `docs/superpowers/plans/2026-06-19-rotation-dashboard.md`
-- [ ] Build, task-by-task (TDD where deterministic; ui-ux-pro-max for visuals):
-  - [ ] Task 1: Scaffold data dir + package.json
-  - [ ] Task 2: Price-fetch pure logic (node --test)
-  - [ ] Task 3: Fetch CLI wiring + sync_rotation.sh + preview.sh
-  - [ ] Task 4: Dashboard data layer + functional skeleton (Playwright counts)
-  - [ ] Task 5: Visual design pass (ui-ux-pro-max) + filters
-  - [ ] Task 6: Daily cron workflow (.github/workflows/prices.yml)
-  - [ ] Task 7: README + final verification
-- [ ] Review (requesting-code-review / code-review)
-- [ ] Verify before completion (verification-before-completion skill)
+- [x] Build, task-by-task (TDD where deterministic; ui-ux-pro-max for visuals):
+  - [x] Task 1: Scaffold data dir + package.json (9ba2163)
+  - [x] Task 2: Price-fetch pure logic — 6/6 node --test (65011c2)
+  - [x] Task 3: Fetch CLI wiring + sync_rotation.sh + preview.sh (2483386)
+  - [x] Task 4: Dashboard data layer + functional skeleton — Playwright counts (5f9e413)
+  - [x] Task 5: Visual design pass (ui-ux-pro-max) + filters/sort (13fd71e)
+  - [x] Task 6: Daily cron workflow (521fb9f)
+  - [x] Task 7: README + final verification
+- [ ] Independent code review (read-only subagent)
+- [ ] verification-before-completion skill
+- [ ] finishing-a-development-branch (merge build/dashboard → main)
 
 ## Review
-_(filled in after build)_
+
+### Execution note
+Subagent-driven was chosen, but subagents in this env can't run Bash (Task 2 implementer
+wrote files but couldn't test/commit). Adapted: I authored files inline from the plan,
+ran ALL verification (tests/browser/commits) myself, with an independent read-only review
+at the end. Built on branch `build/dashboard` (not main).
+
+### Verification evidence (all green)
+- `node --test` → 6/6 pass (parseSnapshot/buildPricesJson/run; current-day close, foreign best-effort, never-throw).
+- `tests/sync_rotation.test.sh` → PASS (newest file copied; real data files untouched).
+- Playwright (Chromium, real browser):
+  - Counts: IN 17 / OUT 21 / WATCH 17; themes 6; action queue 16; baskets 10 + 25; table 71 rows.
+  - Unmapped `P` row flagged (1). ARM in IN lane; AVGO in WATCH lane.
+  - Graceful degradation: no `prices.json` → "pending" + all `—`; placeholder → same; sample → US `$close`, foreign `—`.
+  - Filters: US → 54 visible / 0 foreign; Foreign → 17; rotation IN → 17. Sort score desc → top = 100. Zero page errors.
+  - Responsive verified at 1440 / 375.
+- `prices.yml` parsed + structure validated (cron 30 22 * * 1-5, contents:write, secret env, steps).
+
+### Spec coverage (docs/.../2026-06-19-rotation-dashboard-design.md)
+§1 purpose, §2 locked decisions, §3 IA, §4 IN/OUT/WATCH (verified counts), §5 self-contained +
+runtime-fetch + graceful degradation + P quirk, §6 fetch/contract/cron/sync/Pages, §7 visual,
+§8 repo structure, §9 foreign best-effort, §10 success criteria — all covered. No gaps.
+
+### Deviations from plan (improvements, all verified)
+- Fixed a `.xx5` float-edge in the change_pct test (5.345 → 5.367).
+- Hardened the sync test so its fixture can't clobber the real dated archive.
+- Ship a `pending` placeholder `data/prices.json` (eliminates a harmless 404; cron overwrites).
+- Added click-to-sort columns alongside the planned filters (spec §E said "sortable").
+
+### Follow-ups for the user (not blockers)
+- Set the `MASSIVE_API_KEY` Actions secret; confirm Massive base URL / foreign symbol format.
+- Enable Pages (deploy-from-branch, main/root) and push to a GitHub remote.
+- Root `rotation_2026-06-12.json` + `DASHBOARD_HANDOFF.md` remain (harmless inputs; not republished secrets).
