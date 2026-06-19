@@ -13,3 +13,6 @@ npm-debug.log*
 # Editors
 .vscode/
 .idea/
+
+# Claude Code session/local tooling state
+.claude/
