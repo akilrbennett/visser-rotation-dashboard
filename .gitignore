@@ -1,0 +1,15 @@
+# OS
+.DS_Store
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Secrets / local env — the Massive API key must NEVER be committed
+.env
+.env.*
+*.local
+
+# Editors
+.vscode/
+.idea/
