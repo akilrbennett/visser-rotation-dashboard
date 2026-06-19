@@ -1,8 +1,26 @@
 {
   "as_of": "2026-06-19",
-  "fetched_at": "2026-06-19T20:08:17.821Z",
+  "fetched_at": "2026-06-19T20:20:09.291Z",
   "source": "Massive/Polygon snapshot (current-day close)",
   "quotes": {
+    "AMD": {
+      "close": 537.37,
+      "date": "2026-06-19",
+      "change_pct": 0,
+      "stale": true
+    },
+    "VRT": {
+      "close": 333.05,
+      "date": "2026-06-19",
+      "change_pct": 0,
+      "stale": true
+    },
+    "COHR": {
+      "close": 389.57,
+      "date": "2026-06-19",
+      "change_pct": 0,
+      "stale": true
+    },
     "MKSI": {
       "close": 406.37,
       "date": "2026-06-19",
@@ -299,24 +317,6 @@
     },
     "SMCI": {
       "close": 30.66,
-      "date": "2026-06-19",
-      "change_pct": 0,
-      "stale": true
-    },
-    "AMD": {
-      "close": 537.37,
-      "date": "2026-06-19",
-      "change_pct": 0,
-      "stale": true
-    },
-    "VRT": {
-      "close": 333.05,
-      "date": "2026-06-19",
-      "change_pct": 0,
-      "stale": true
-    },
-    "COHR": {
-      "close": 389.57,
       "date": "2026-06-19",
       "change_pct": 0,
       "stale": true
