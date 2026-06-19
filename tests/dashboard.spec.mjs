@@ -104,3 +104,29 @@ test('a11y: mini-nav, scope=col headers, labeled All filters', async ({ page }) 
   await expect(chip(page, 'lane', 'all')).toHaveAttribute('aria-label', 'Rotation filter: All');
   await expect(chip(page, 'us', 'all')).toHaveAttribute('aria-label', 'Listing filter: All');
 });
+
+test('lane-card pending prices carry a tooltip', async ({ page }) => {
+  await page.goto(URL);
+  await expect(page.locator('[data-testid="lane-in"] .nm-px span[title]').first()).toHaveAttribute('title', /pending/i);
+});
+
+test('every mini-nav anchor lands on its section heading', async ({ page }) => {
+  await page.goto(URL);
+  for (const id of ['rotation', 'themes-sec', 'action-queue-sec', 'baskets-sec', 'all-names']) {
+    await page.evaluate(() => window.scrollTo(0, 600));
+    await page.locator(`.mininav a[href="#${id}"]`).click();
+    await page.waitForTimeout(800);
+    const top = await page.evaluate((i) => document.getElementById(i).getBoundingClientRect().top, id);
+    expect(top, `${id} landing`).toBeGreaterThanOrEqual(35);
+    expect(top, `${id} landing`).toBeLessThanOrEqual(85);
+  }
+});
+
+test('mini-nav stays on one line at 375px', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 800 });
+  await page.goto(URL);
+  await page.evaluate(() => window.scrollTo(0, 500));
+  await page.waitForTimeout(200);
+  const tops = await page.$$eval('.mininav a', (els) => els.map((e) => Math.round(e.getBoundingClientRect().top)));
+  expect(new Set(tops).size).toBe(1);
+});

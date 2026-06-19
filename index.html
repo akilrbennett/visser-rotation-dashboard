@@ -159,7 +159,8 @@
   .chip.active { color:var(--bg); background:var(--accent); border-color:var(--accent); font-weight:650; }
 
   /* ---------- All-names table ---------- */
-  .table-wrap { position:relative; overflow-x:auto; border:1px solid var(--border); border-radius:var(--r); }
+  .table-scroll { position:relative; }
+  .table-wrap { overflow-x:auto; border:1px solid var(--border); border-radius:var(--r); }
   table { width:100%; border-collapse:collapse; min-width:680px; }
   thead th {
     position:sticky; top:0; background:var(--elev); text-align:left; font-size:.74rem;
@@ -198,11 +199,20 @@
   @media (max-width:480px) {
     .themes { grid-template-columns:1fr 1fr; }          /* keep 2-col on small phones */
     .baskets { grid-template-columns:1fr; }
-    .basket-card .b-co { white-space:normal; overflow-wrap:anywhere; }
-    .table-wrap::after {                                  /* right-edge fade = "scroll for more" */
-      content:""; position:absolute; top:0; right:0; bottom:0; width:26px; pointer-events:none;
-      background:linear-gradient(to right, rgba(2,6,23,0), var(--bg));
+    /* Give the company name room so single words don't break mid-word: row wraps, setup drops to its own line. */
+    .basket-card .b-row { flex-wrap:wrap; row-gap:2px; }
+    .basket-card .b-co { flex:1 1 auto; min-width:0; white-space:normal; word-break:normal; overflow-wrap:break-word; }
+    .basket-card .b-px { order:2; }
+    .basket-card .b-row > .muted { order:3; flex-basis:100%; }
+    .table-scroll::after {                                /* right-edge fade on the NON-scrolling wrapper */
+      content:""; position:absolute; top:0; right:0; bottom:0; width:28px; pointer-events:none;
+      background:linear-gradient(to right, rgba(2,6,23,0), var(--bg)); transition:opacity .15s ease;
     }
+    .table-scroll.at-end::after { opacity:0; }            /* hide once scrolled to the end */
+  }
+  @media (max-width:400px) {
+    .mininav { gap:2px; padding:6px 9px; }
+    .mininav a { font-size:.68rem; padding:4px 6px; }    /* keep all 5 links on one line */
   }
   :focus-visible { outline:2px solid var(--accent); outline-offset:2px; border-radius:4px; }
   @media (prefers-reduced-motion:reduce) { *, html { transition:none !important; scroll-behavior:auto !important; } }
@@ -212,7 +222,7 @@
 <nav class="mininav" aria-label="Section navigation">
   <a href="#rotation">Rotation</a>
   <a href="#themes-sec">Themes</a>
-  <a href="#action-queue-sec">Action Queue</a>
+  <a href="#action-queue-sec">Queue</a>
   <a href="#baskets-sec">Baskets</a>
   <a href="#all-names">All Names</a>
 </nav>
@@ -271,14 +281,16 @@
   <section aria-label="All names" id="all-names">
     <div class="sec-head"><h2>All names</h2><span class="hint">71 tracked · sort &amp; filter</span></div>
     <div class="filters" data-testid="filters"></div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr>
-          <th data-sort="ticker" scope="col">Ticker</th><th scope="col">Company</th><th scope="col">Theme</th>
-          <th scope="col">Setup</th><th data-sort="score" class="num" scope="col">Score</th><th scope="col">Basket</th><th class="num" scope="col">Close</th>
-        </tr></thead>
-        <tbody data-testid="ticker-rows"></tbody>
-      </table>
+    <div class="table-scroll">
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th data-sort="ticker" scope="col">Ticker</th><th scope="col">Company</th><th scope="col">Theme</th>
+            <th scope="col">Setup</th><th data-sort="score" class="num" scope="col">Score</th><th scope="col">Basket</th><th class="num" scope="col">Close</th>
+          </tr></thead>
+          <tbody data-testid="ticker-rows"></tbody>
+        </table>
+      </div>
     </div>
   </section>
 
@@ -539,6 +551,29 @@ function setupMiniNav() {
   const onScroll = () => nav.classList.toggle('show', window.scrollY > 320);
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+  // Precise, uniform anchor scrolling so every section lands just below the sticky nav
+  // (CSS scroll-margin alone mis-landed some targets). OFFSET clears the ~40px nav bar.
+  const OFFSET = 60;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  nav.querySelectorAll('a[href^="#"]').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      const y = target.getBoundingClientRect().top + window.scrollY - OFFSET;
+      window.scrollTo({ top: Math.max(0, y), behavior: reduce ? 'auto' : 'smooth' });
+      history.replaceState(null, '', '#' + id);
+    });
+  });
+  // Table right-edge fade: hide it once the table is scrolled to the end.
+  const scroll = document.querySelector('.table-scroll');
+  const wrap = document.querySelector('.table-wrap');
+  if (scroll && wrap) {
+    const upd = () => scroll.classList.toggle('at-end', wrap.scrollLeft + wrap.clientWidth >= wrap.scrollWidth - 2);
+    wrap.addEventListener('scroll', upd, { passive: true });
+    upd();
+  }
 }
 
 async function loadJson(path) {
