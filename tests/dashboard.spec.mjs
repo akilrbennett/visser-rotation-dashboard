@@ -42,25 +42,35 @@ const maxScore = Math.max(...tickers.map((t) => (typeof t.current_score === 'num
 const expectedNavLinks = 5 + (moves && moves.moves && moves.moves.length ? 1 : 0);
 
 const URL = '/index.html';
+
+// page.goto resolves on load, but main() renders asynchronously after its fetches settle.
+// Playwright's own matchers retry, so they ride that out; raw $$eval / evaluate reads do
+// not and will sample a half-rendered page. Anything doing a raw read goes through here.
+// renderFooter is the last call in main(), so its stamp is the render-complete signal.
+async function gotoReady(page) {
+  await page.goto(URL);
+  await expect(page.getByTestId('generated')).not.toBeEmpty();
+}
+
 const rows = (page) => page.locator('[data-testid="ticker-rows"] tr');
 const visible = (page) => page.locator('[data-testid="ticker-rows"] tr:not(.hidden)');
 const chip = (page, g, v) => page.locator(`.chip[data-group="${g}"][data-val="${v}"]`);
 
 test('three lanes carry the counts the rotation JSON implies', async ({ page }) => {
-  await page.goto(URL);
+  await gotoReady(page);
   await expect(page.getByTestId('count-in')).toHaveText(`(${lanes.in.length})`);
   await expect(page.getByTestId('count-out')).toHaveText(`(${lanes.out.length})`);
   await expect(page.getByTestId('count-watch')).toHaveText(`(${lanes.watch.length})`);
 });
 
 test('window stamp matches the rotation meta', async ({ page }) => {
-  await page.goto(URL);
+  await gotoReady(page);
   await expect(page.getByTestId('week-stamp'))
     .toHaveText(`${rotation.meta.current_week} vs. ${rotation.meta.previous_week}`);
 });
 
 test('themes, action queue, baskets and table all match the data', async ({ page }) => {
-  await page.goto(URL);
+  await gotoReady(page);
   await expect(page.getByTestId('themes').locator('> div')).toHaveCount(themesLatest.length);
   await expect(page.getByTestId('action-queue').locator('> div')).toHaveCount(rotation.action_queue.length);
   await expect(page.getByTestId('basket-10').locator('> div')).toHaveCount(rotation.baskets['10_name'].length);
@@ -69,18 +79,18 @@ test('themes, action queue, baskets and table all match the data', async ({ page
 });
 
 test('flags exactly the unmapped rows', async ({ page }) => {
-  await page.goto(URL);
+  await gotoReady(page);
   await expect(page.locator('tr[data-unmapped="true"]'))
     .toHaveCount(count((t) => t.theme === null || t.current_setup === null));
 });
 
 test('graceful price degradation: a foreign name with no quote shows an em dash', async ({ page }) => {
-  await page.goto(URL);
+  await gotoReady(page);
   await expect(rows(page).filter({ hasText: foreignNoPrice }).locator('td').last()).toHaveText('—');
 });
 
 test('listing filter splits US and foreign as the data does', async ({ page }) => {
-  await page.goto(URL);
+  await gotoReady(page);
   await chip(page, 'us', 'true').click();
   await expect(page.locator('[data-testid="ticker-rows"] tr[data-us="false"]:not(.hidden)')).toHaveCount(0);
   await expect(visible(page)).toHaveCount(count((t) => t.us_listed));
@@ -89,19 +99,19 @@ test('listing filter splits US and foreign as the data does', async ({ page }) =
 });
 
 test('rotation filter shows the IN cohort', async ({ page }) => {
-  await page.goto(URL);
+  await gotoReady(page);
   await chip(page, 'lane', 'in').click();
   await expect(visible(page)).toHaveCount(count((t) => laneOf[t.ticker] === 'in'));
 });
 
 test('theme filter shows that theme only', async ({ page }) => {
-  await page.goto(URL);
+  await gotoReady(page);
   await chip(page, 'theme', topTheme.th).click();
   await expect(visible(page)).toHaveCount(topTheme.n);
 });
 
 test('basket filter shows each basket', async ({ page }) => {
-  await page.goto(URL);
+  await gotoReady(page);
   await chip(page, 'basket', '25').click();
   await expect(visible(page)).toHaveCount(count((t) => inBasket(t, '25')));
   await chip(page, 'basket', '10').click();
@@ -109,42 +119,42 @@ test('basket filter shows each basket', async ({ page }) => {
 });
 
 test('combined filters intersect: top theme plus 25-name', async ({ page }) => {
-  await page.goto(URL);
+  await gotoReady(page);
   await chip(page, 'theme', topTheme.th).click();
   await chip(page, 'basket', '25').click();
   await expect(visible(page)).toHaveCount(count((t) => t.theme === topTheme.th && inBasket(t, '25')));
 });
 
 test('combined filters intersect: rotation IN plus US listing', async ({ page }) => {
-  await page.goto(URL);
+  await gotoReady(page);
   await chip(page, 'lane', 'in').click();
   await chip(page, 'us', 'true').click();
   await expect(visible(page)).toHaveCount(count((t) => laneOf[t.ticker] === 'in' && t.us_listed));
 });
 
 test('sort by score descending puts the data max first', async ({ page }) => {
-  await page.goto(URL);
+  await gotoReady(page);
   await page.locator('th[data-sort="score"]').click(); // ascending
   await page.locator('th[data-sort="score"]').click(); // descending
   await expect(rows(page).first()).toHaveAttribute('data-score', String(maxScore));
 });
 
 test('US tickers link to a chart; foreign stay plain text', async ({ page }) => {
-  await page.goto(URL);
+  await gotoReady(page);
   const link = rows(page).filter({ hasText: usTicker }).first().locator('td.tkr a.tkr-link');
   await expect(link).toHaveAttribute('href', new RegExp(`tradingview\\.com.*${usTicker}`));
   await expect(rows(page).filter({ hasText: foreignNoPrice }).locator('td.tkr a')).toHaveCount(0);
 });
 
 test('WATCH-lane score deltas are neutral, never red or green', async ({ page }) => {
-  await page.goto(URL);
+  await gotoReady(page);
   await expect(page.locator('[data-testid="lane-watch"] .delta.neutral').first()).toBeVisible();
   await expect(page.locator('[data-testid="lane-watch"] .delta.neg')).toHaveCount(0);
   await expect(page.locator('[data-testid="lane-watch"] .delta.pos')).toHaveCount(0);
 });
 
 test('a11y: mini-nav, scope=col headers, labeled All filters', async ({ page }) => {
-  await page.goto(URL);
+  await gotoReady(page);
   await expect(page.locator('.mininav a:not(.hidden)')).toHaveCount(expectedNavLinks);
   await expect(page.locator('thead th[scope="col"]')).toHaveCount(7);
   await expect(chip(page, 'lane', 'all')).toHaveAttribute('aria-label', 'Rotation filter: All');
@@ -153,7 +163,7 @@ test('a11y: mini-nav, scope=col headers, labeled All filters', async ({ page }) 
 
 test('lane-card pending prices carry a tooltip', async ({ page }) => {
   test.skip(!lanes.in.some((n) => !hasPrice(n.ticker)), 'every IN name has a price today');
-  await page.goto(URL);
+  await gotoReady(page);
   await expect(page.locator('[data-testid="lane-in"] .nm-px span[title]').first())
     .toHaveAttribute('title', /pending/i);
 });
@@ -174,7 +184,7 @@ async function settleScroll(page, timeout = 6000) {
 }
 
 test('every mini-nav anchor lands on its section heading', async ({ page }) => {
-  await page.goto(URL);
+  await gotoReady(page);
   const ids = await page.$$eval('.mininav a:not(.hidden)', (els) =>
     els.map((a) => a.getAttribute('href').slice(1)));
   expect(ids.length).toBe(expectedNavLinks);
@@ -197,7 +207,7 @@ test('every mini-nav anchor lands on its section heading', async ({ page }) => {
 
 test('mini-nav stays on one line at 375px', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 800 });
-  await page.goto(URL);
+  await gotoReady(page);
   await page.evaluate(() => window.scrollTo(0, 500));
   await page.waitForTimeout(200);
   const tops = await page.$$eval('.mininav a:not(.hidden)', (els) =>
@@ -244,7 +254,7 @@ test('Inter is self-hosted, same-origin, and actually shapes the text', async ({
 });
 
 test('no readable text is left on the retired Ash tier', async ({ page }) => {
-  await page.goto(URL);
+  await gotoReady(page);
   const ash = await page.evaluate(() => {
     const hits = [];
     for (const el of document.querySelectorAll('body *')) {
@@ -257,7 +267,7 @@ test('no readable text is left on the retired Ash tier', async ({ page }) => {
 });
 
 test('empty header chrome collapses instead of rendering an empty box', async ({ page }) => {
-  await page.goto(URL);
+  await gotoReady(page);
   const tone = (rotation.meta.model_tone || '').trim();
   const narrative = ((rotation.meta.research_context || {}).narrative || '').trim();
   await expect(page.getByTestId('model-tone')).toBeHidden({ visible: !!tone });
@@ -273,7 +283,7 @@ test('empty header chrome collapses instead of rendering an empty box', async ({
 // ---------- Disclosed moves ----------
 
 test('disclosed moves panel matches its JSON, or hides when there is none', async ({ page }) => {
-  await page.goto(URL);
+  await gotoReady(page);
   const section = page.locator('#disclosed-moves-sec');
   if (!moves || !moves.moves || !moves.moves.length) {
     await expect(section).toBeHidden();
@@ -294,7 +304,7 @@ test('show-all reveals every date, and collapsing returns to the default', async
   const dates = [...new Set(moves.moves.map((m) => m.date))];
   test.skip(dates.length <= MOVES_DEFAULT_DATES, 'not enough dates to toggle');
 
-  await page.goto(URL);
+  await gotoReady(page);
   const groups = page.locator('[data-testid="moves"] .mv-group');
   const toggle = page.getByTestId('moves-toggle');
   await expect(toggle).toHaveText(`Show all ${dates.length} dates`);
@@ -307,7 +317,7 @@ test('show-all reveals every date, and collapsing returns to the default', async
 
 test('medium-confidence rows are de-emphasised but present, and quotes expand', async ({ page }) => {
   test.skip(!moves || !moves.moves.length, 'no disclosed moves data');
-  await page.goto(URL);
+  await gotoReady(page);
   const dates = [...new Set(moves.moves.map((m) => m.date))].sort().reverse().slice(0, MOVES_DEFAULT_DATES);
   const shownMoves = moves.moves.filter((m) => dates.includes(m.date));
   const mediums = shownMoves.filter((m) => m.confidence === 'medium').length;
