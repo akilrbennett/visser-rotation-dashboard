@@ -36,9 +36,10 @@
     --out:var(--color-coral-red);  --out-bg:rgba(235,87,87,.10); --out-bd:rgba(235,87,87,.32);
     --watch:#d3ab45;               --watch-bg:rgba(211,171,69,.10); --watch-bd:rgba(211,171,69,.30);
 
-    /* ---- Tag chips ---- */
-    --tag-fg:#a5a7f7; --tag-bg:rgba(99,102,241,.14); --tag-bd:rgba(99,102,241,.34);
-    --tag2-fg:#bda0fa; --tag2-bg:rgba(139,92,246,.14); --tag2-bd:rgba(139,92,246,.32);
+    /* ---- Tag chips: Iris Violet (sector) / Lavender (country, entry-window reason) ---- */
+    --tag-fg:#a5a7f7;  --tag-bg:rgba(99,102,241,.16);
+    --tag2-fg:#bda0fa; --tag2-bg:rgba(139,92,246,.16);
+    --chip-neutral-bg:rgba(255,255,255,.05);
 
     /* ---- Type ---- */
     --mono:"Berkeley Mono",ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
@@ -130,11 +131,15 @@
   .name .nm-px { margin-left:auto; font-family:var(--mono); font-size:.84rem; white-space:nowrap; }
   .name .nm-chg { font-family:var(--mono); font-size:.72rem; white-space:nowrap; }
   .name .nm-sub { display:flex; flex-wrap:wrap; align-items:center; gap:4px 5px; margin-top:3px; font-size:.71rem; color:var(--muted); line-height:1.3; }
-  .name .nm-sub .tag { padding:1px 6px; font-size:.65rem; }
-  .tag { font-size:.68rem; padding:2px 7px; border-radius:var(--r-pill); border:1px solid var(--border-strong); color:var(--muted); white-space:nowrap; }
-  .tag.reason { border-color:var(--watch-bd); color:var(--watch); }
-  .exch { font-size:.66rem; color:var(--muted-2); border:1px solid var(--border); border-radius:var(--r-badge); padding:1px 6px; white-space:nowrap; }
-  .sc-chip { font-family:var(--mono); font-size:.66rem; color:var(--muted); background:var(--surface); border:1px solid var(--border); border-radius:var(--r-badge); padding:0 5px; }
+  /* Badge-style tag chips: Iris Violet for sector, Lavender for country and the
+     entry-window reason. Fills, no outline — Linear badges are fill-only. */
+  .tag { font-size:.7rem; line-height:1.5; padding:1px 6px; border-radius:var(--r-badge);
+         color:var(--tag-fg); background:var(--tag-bg); white-space:nowrap; }
+  .tag.reason { color:var(--tag2-fg); background:var(--tag2-bg); }
+  .exch { font-size:.68rem; line-height:1.5; padding:1px 6px; border-radius:var(--r-badge);
+          color:var(--tag2-fg); background:var(--tag2-bg); white-space:nowrap; }
+  .sc-chip { font-family:var(--mono); font-size:.68rem; line-height:1.5; color:var(--muted);
+             background:var(--chip-neutral-bg); border-radius:var(--r-badge); padding:0 6px; }
   .transition { font-family:var(--mono); font-size:.7rem; color:var(--fg-3); }
   .delta.pos { color:var(--in); } .delta.neg { color:var(--out); } .delta.neutral { color:var(--watch); }
   .pos { color:var(--in); } .neg { color:var(--out); }
@@ -146,7 +151,9 @@
   .theme .t-score { font-family:var(--mono); font-size:1.5rem; font-weight:var(--w-med); margin-top:6px; display:flex; align-items:baseline; gap:8px; }
   .theme .t-score .d { font-size:.82rem; font-weight:var(--w-med); }
   .theme .t-meta { margin-top:8px; font-size:.76rem; color:var(--muted); display:flex; flex-wrap:wrap; gap:4px 12px; align-items:center; }
-  .status { font-size:.68rem; font-weight:var(--w-med); text-transform:uppercase; letter-spacing:.04em; padding:2px 8px; border-radius:var(--r-pill); }
+  /* Status stays semantic (Leading/Constructive green, Weakening amber, Breaking Down red)
+     — it encodes direction, same reasoning as the locked In/Out/Watch exception. */
+  .status { font-size:.68rem; font-weight:var(--w-med); text-transform:uppercase; letter-spacing:.04em; padding:1px 7px; border-radius:var(--r-badge); }
   .status[data-s="Leading"]       { color:var(--in);    background:var(--in-bg);    border:1px solid var(--in-bd); }
   .status[data-s="Constructive"]  { color:var(--in);    background:var(--in-bg);    border:1px solid var(--in-bd); }
   .status[data-s="Weakening"]     { color:var(--watch); background:var(--watch-bg); border:1px solid var(--watch-bd); }
