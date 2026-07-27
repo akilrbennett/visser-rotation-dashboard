@@ -14,7 +14,9 @@
     --color-ash:#62666d;         --color-fog:#8a8f98;         --color-mist:#d0d6e0;
     --color-bone:#e5e5e6;        --color-paper:#ffffff;
     --color-acid-lime:#e4f222;   --color-pulse-green:#27a644; --color-coral-red:#eb5757;
-    --color-signal-teal:#02b8cc; --color-iris-violet:#6366f1; --color-lavender:#8b5cf6;
+    /* Signal Teal #02b8cc has no role in the locked mapping, so it is not declared.
+       Iris Violet #6366f1 and Lavender #8b5cf6 are used only as the alpha tints and
+       lightened text tints below, so they are declared there rather than as bare hexes. */
 
     /* ---- Role mapping (DECISIONS-LOCKED) ---- */
     --bg:var(--color-void);              /* page canvas */
@@ -36,7 +38,9 @@
     --out:var(--color-coral-red);  --out-bg:rgba(235,87,87,.10); --out-bd:rgba(235,87,87,.32);
     --watch:#d3ab45;               --watch-bg:rgba(211,171,69,.10); --watch-bd:rgba(211,171,69,.30);
 
-    /* ---- Tag chips: Iris Violet (sector) / Lavender (country, entry-window reason) ---- */
+    /* ---- Tag chips: Iris Violet (sector) / Lavender (country, entry-window reason) ----
+       Fills are 16% tints of Iris Violet #6366f1 and Lavender #8b5cf6; the text colors are
+       those same two hues lightened to clear 4.5:1 on Carbon and Obsidian. */
     --tag-fg:#a5a7f7;  --tag-bg:rgba(99,102,241,.16);
     --tag2-fg:#bda0fa; --tag2-bg:rgba(139,92,246,.16);
     --chip-neutral-bg:rgba(255,255,255,.05);
