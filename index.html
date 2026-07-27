@@ -6,9 +6,9 @@
 <title>AI Macro Nexus — Rotation</title>
 <style>
   /* Self-contained, no external/CDN runtime deps. Linear design language.
-     Fonts: prefer locally-installed Inter Variable / Berkeley Mono, else system stack — no network fetch. */
+     Fonts: prefer locally-installed Inter Variable / Berkeley Mono, else system stack, no network fetch. */
   :root {
-    /* ---- Linear tokens — values from design/linear/tokens.json (authoritative) ---- */
+    /* ---- Linear tokens: values from design/linear/tokens.json (authoritative) ---- */
     --color-void:#08090a;        --color-carbon:#0f1011;      --color-obsidian:#161718;
     --color-graphite:#23252a;    --color-smoke:#383b3f;
     --color-ash:#62666d;         --color-fog:#8a8f98;         --color-mist:#d0d6e0;
@@ -31,7 +31,7 @@
     --fg-3:var(--color-mist);            /* secondary body */
     --muted:var(--color-fog);            /* tertiary */
     --muted-2:var(--color-ash);          /* muted / inactive */
-    --accent:var(--color-acid-lime);     /* header mark, active states, links — sparingly */
+    --accent:var(--color-acid-lime);     /* header mark, active states, links; sparingly */
 
     /* ---- Semantic exception (locked): Rotating In green, Rotating Out red, Watch amber ---- */
     --in:var(--color-pulse-green); --in-bg:rgba(39,166,68,.10); --in-bd:rgba(39,166,68,.34);
@@ -136,7 +136,7 @@
   .name .nm-chg { font-family:var(--mono); font-size:.72rem; white-space:nowrap; }
   .name .nm-sub { display:flex; flex-wrap:wrap; align-items:center; gap:4px 5px; margin-top:3px; font-size:.71rem; color:var(--muted); line-height:1.3; }
   /* Badge-style tag chips: Iris Violet for sector, Lavender for country and the
-     entry-window reason. Fills, no outline — Linear badges are fill-only. */
+     entry-window reason. Fills, no outline, because Linear badges are fill-only. */
   .tag { font-size:.7rem; line-height:1.5; padding:1px 6px; border-radius:var(--r-badge);
          color:var(--tag-fg); background:var(--tag-bg); white-space:nowrap; }
   .tag.reason { color:var(--tag2-fg); background:var(--tag2-bg); }
@@ -199,7 +199,7 @@
   .theme .t-score .d { font-size:.82rem; font-weight:var(--w-med); }
   .theme .t-meta { margin-top:8px; font-size:.76rem; color:var(--muted); display:flex; flex-wrap:wrap; gap:4px 12px; align-items:center; }
   /* Status stays semantic (Leading/Constructive green, Weakening amber, Breaking Down red)
-     — it encodes direction, same reasoning as the locked In/Out/Watch exception. */
+     because it encodes direction, same reasoning as the locked In/Out/Watch exception. */
   .status { font-size:.68rem; font-weight:var(--w-med); text-transform:uppercase; letter-spacing:.04em; padding:1px 7px; border-radius:var(--r-badge); }
   .status[data-s="Leading"]       { color:var(--in);    background:var(--in-bg);    border:1px solid var(--in-bd); }
   .status[data-s="Constructive"]  { color:var(--in);    background:var(--in-bg);    border:1px solid var(--in-bd); }
@@ -600,7 +600,7 @@ function renderDisclosedMoves(data) {
   const sec = document.getElementById('disclosed-moves-sec');
   if (!sec) return;
   const moves = (data && Array.isArray(data.moves)) ? data.moves.filter((m) => m && m.date) : [];
-  if (!moves.length) return;                       // stays hidden — no error, board unaffected
+  if (!moves.length) return;                       // stays hidden, no error, board unaffected
 
   const groups = groupMovesByDate(moves);
   const host = $('[data-testid="moves"]');

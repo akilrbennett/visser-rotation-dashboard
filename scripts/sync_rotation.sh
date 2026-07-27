@@ -30,7 +30,7 @@ if [ -f "$SRC/disclosed_moves.json" ]; then
   cp "$SRC/disclosed_moves.json" "$DEST_DIR/disclosed_moves.json"
   echo "Synced disclosed_moves.json -> data/disclosed_moves.json"
 else
-  echo "No disclosed_moves.json in $SRC — skipped (panel stays hidden)"
+  echo "No disclosed_moves.json in $SRC, skipped (panel stays hidden)"
 fi
 
 echo "Next: git add data/ && git commit -m 'data: rotation $(basename "$newest")' && git push"

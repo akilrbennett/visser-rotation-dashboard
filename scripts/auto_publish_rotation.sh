@@ -26,7 +26,7 @@ ROTATION_SRC="$ROTATION_SRC" ./scripts/sync_rotation.sh >>"$LOG" 2>&1 || { log "
 # 3) Anything new to publish?
 changed="$(git status --porcelain data/)"
 if [ -z "$changed" ]; then
-  log "no data change — nothing to publish"
+  log "no data change, nothing to publish"
   log "---- run end ----"
   exit 0
 fi
@@ -34,7 +34,7 @@ fi
 newest="$(ls -t "$ROTATION_SRC"/rotation_*.json 2>/dev/null | head -1)"
 wk="$(basename "${newest:-rotation_unknown.json}" | sed -e 's/^rotation_//' -e 's/\.json$//')"
 
-# Label the commit for what actually moved — data/ now also carries disclosed_moves.json,
+# Label the commit for what actually moved, since data/ now also carries disclosed_moves.json,
 # which can change on its own without a new rotation week.
 rot_changed=0; mv_changed=0
 printf '%s\n' "$changed" | grep -q 'data/rotation_'          && rot_changed=1

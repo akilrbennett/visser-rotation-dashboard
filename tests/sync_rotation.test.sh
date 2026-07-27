@@ -26,14 +26,14 @@ tmp="$(mktemp -d)"
 printf '{"old":true}\n' > "$tmp/rotation_2099-01-01.json"; sleep 1
 printf '{"new":true}\n' > "$tmp/rotation_2099-06-12.json"
 
-# 1) Source has no disclosed_moves.json — rotation still syncs, moves file is left alone.
+# 1) Source has no disclosed_moves.json: rotation still syncs, moves file is left alone.
 rm -f data/disclosed_moves.json
 ROTATION_SRC="$tmp" bash scripts/sync_rotation.sh >/dev/null
 ok=1
 grep -q '"new"' data/rotation_latest.json || { echo "FAIL: newest rotation not copied"; ok=0; }
 [ -f data/disclosed_moves.json ] && { echo "FAIL: moves file created from a source that has none"; ok=0; }
 
-# 2) Source has one — it lands in data/.
+# 2) Source has one: it lands in data/.
 printf '{"moves":[{"date":"2099-01-01"}],"source_videos":1}\n' > "$tmp/disclosed_moves.json"
 ROTATION_SRC="$tmp" bash scripts/sync_rotation.sh >/dev/null
 grep -q '2099-01-01' data/disclosed_moves.json 2>/dev/null || { echo "FAIL: disclosed_moves.json not copied"; ok=0; }
