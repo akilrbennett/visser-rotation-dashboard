@@ -335,13 +335,14 @@
   <header class="top">
     <div class="brandrow">
       <h1><span class="accent">AI Macro Nexus</span> — Rotation</h1>
-      <span class="pill" data-testid="model-tone"></span>
+      <span class="pill hidden" data-testid="model-tone"></span>
     </div>
     <div class="meta-line">
       <span><span class="k">Window</span> <span class="v" data-testid="week-stamp"></span></span>
       <span><span class="k">Prices</span> <span class="v" data-testid="price-stamp"></span></span>
     </div>
-    <div class="macro-frame">
+    <!-- Both the tone pill above and this frame collapse when their field is empty. -->
+    <div class="macro-frame hidden" data-testid="macro-frame">
       <span class="mf-label">Macro Frame</span>
       <p class="narrative" data-testid="narrative"></p>
     </div>
@@ -480,10 +481,20 @@ function statusBarClass(status) {
 const $ = (sel) => document.querySelector(sel);
 const el = (tag, props = {}, html) => { const e = document.createElement(tag); Object.assign(e, props); if (html != null) e.innerHTML = html; return e; };
 
+// An empty bordered box reads as broken, so chrome whose field has no value collapses
+// entirely. Toggles both ways: the moment the field carries a value again, it comes back.
+function showWhen(el, value) {
+  const text = value == null ? '' : String(value).trim();
+  el.classList.toggle('hidden', text === '');
+  return text;
+}
+
 function renderHeader(meta, prices) {
   $('[data-testid="week-stamp"]').textContent = `${meta.current_week} vs. ${meta.previous_week}`;
-  $('[data-testid="model-tone"]').textContent = meta.model_tone;
-  $('[data-testid="narrative"]').textContent = (meta.research_context && meta.research_context.narrative) || '';
+  const pill = $('[data-testid="model-tone"]');
+  pill.textContent = showWhen(pill, meta.model_tone);
+  const research = meta.research_context || {};
+  $('[data-testid="narrative"]').textContent = showWhen($('[data-testid="macro-frame"]'), research.narrative);
   $('[data-testid="price-stamp"]').textContent = (prices && prices.as_of)
     ? `as of ${prices.as_of}` : 'pending — first fetch after next close';
 }
