@@ -1,0 +1,471 @@
+{
+  "generated": "2026-07-27T22:24:33+00:00",
+  "window_days": null,
+  "source_videos": 21,
+  "moves": [
+    {
+      "date": "2026-07-25",
+      "video_id": "McKTuWYzXgg",
+      "video_title": "Bitcoin's Turn Is Next — The Easy Money AI Trade Is Over?",
+      "asset": "MU",
+      "action": "buy",
+      "note": "MU discloses buying (\"I bought\")",
+      "quote": "And at the end of the day, you have to watch those stocks because until those stocks are bottoming and rally and we did see, you know, I mentioned that I bought Micron last week.",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-07-24",
+      "video_id": "-SM7TrC8hSM",
+      "video_title": "Short-Term AI Fear, Long-Term Compute Scarcity",
+      "asset": "AAOI",
+      "action": "buy",
+      "note": "AAOI discloses buying (\"I did buy\")",
+      "quote": "But at this point, uh I did buy another optical name this week as well, AAOI.",
+      "confidence": "high"
+    },
+    {
+      "date": "2026-07-24",
+      "video_id": "-SM7TrC8hSM",
+      "video_title": "Short-Term AI Fear, Long-Term Compute Scarcity",
+      "asset": "MRVL",
+      "action": "holds",
+      "note": "MRVL states he holds it (\"still my biggest position\")",
+      "quote": "It's the reason why Marvell is still my biggest position.",
+      "confidence": "high"
+    },
+    {
+      "date": "2026-07-18",
+      "video_id": "fEnq13uJBD0",
+      "video_title": "Bitcoin's Next Move Depends On One Fed Decision",
+      "asset": "MU",
+      "action": "holds",
+      "note": "MU states he holds it (\"I have a position\")",
+      "quote": "Uh Micron I have a position again.",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-07-17",
+      "video_id": "gMJT9HQvxnk",
+      "video_title": "AI's Speed Crash: The Structural Bull Market Isn't Over",
+      "asset": "Bitcoin",
+      "action": "rotate_in",
+      "note": "Bitcoin discloses rotating money into it (\"money that I rotated into\")",
+      "quote": "So, and trust me, when I sold out of a lot of this stuff, most a good portion of the money that I rotated into was into Bitcoin, Ethereum, and uh silver.",
+      "confidence": "high"
+    },
+    {
+      "date": "2026-07-17",
+      "video_id": "gMJT9HQvxnk",
+      "video_title": "AI's Speed Crash: The Structural Bull Market Isn't Over",
+      "asset": "Ethereum",
+      "action": "rotate_in",
+      "note": "Ethereum discloses rotating money into it (\"money that I rotated into\")",
+      "quote": "So, and trust me, when I sold out of a lot of this stuff, most a good portion of the money that I rotated into was into Bitcoin, Ethereum, and uh silver.",
+      "confidence": "high"
+    },
+    {
+      "date": "2026-07-17",
+      "video_id": "gMJT9HQvxnk",
+      "video_title": "AI's Speed Crash: The Structural Bull Market Isn't Over",
+      "asset": "FLNC",
+      "action": "holds",
+      "note": "FLNC states he holds it (\"I have small positions\")",
+      "quote": "It's really the only semi I own except for Nvidia at this point, but a lot of the other ones, Integris, um, Fluence, I have small positions.",
+      "confidence": "high"
+    },
+    {
+      "date": "2026-07-17",
+      "video_id": "gMJT9HQvxnk",
+      "video_title": "AI's Speed Crash: The Structural Bull Market Isn't Over",
+      "asset": "LLY",
+      "action": "holds",
+      "note": "LLY states he holds it (\"my biggest uh one\")",
+      "quote": "Uh that's my biggest uh one behind Eli Liy at this point.",
+      "confidence": "high"
+    },
+    {
+      "date": "2026-07-17",
+      "video_id": "gMJT9HQvxnk",
+      "video_title": "AI's Speed Crash: The Structural Bull Market Isn't Over",
+      "asset": "MRVL",
+      "action": "holds",
+      "note": "MRVL states he holds it (\"It's still my biggest\") [subject carried from the earlier sentence in the quote]",
+      "quote": "Marll got down to 62%. It's been painful. Um, but again, I made a lot of money on the way up. I took some off. It's still my biggest position.",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-07-17",
+      "video_id": "gMJT9HQvxnk",
+      "video_title": "AI's Speed Crash: The Structural Bull Market Isn't Over",
+      "asset": "MRVL",
+      "action": "trim",
+      "note": "MRVL discloses selling part of the position (\"I took some off\") [subject carried from the earlier sentence in the quote]",
+      "quote": "Marll got down to 62%. It's been painful. Um, but again, I made a lot of money on the way up. I took some off.",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-07-17",
+      "video_id": "gMJT9HQvxnk",
+      "video_title": "AI's Speed Crash: The Structural Bull Market Isn't Over",
+      "asset": "MU",
+      "action": "buy",
+      "note": "MU discloses buying (\"I even bought\")",
+      "quote": "Uh I even bought Micron at higher levels than the average price of where I got out.",
+      "confidence": "high"
+    },
+    {
+      "date": "2026-07-17",
+      "video_id": "gMJT9HQvxnk",
+      "video_title": "AI's Speed Crash: The Structural Bull Market Isn't Over",
+      "asset": "NVDA",
+      "action": "holds",
+      "note": "NVDA states he holds it (\"I own\")",
+      "quote": "It's really the only semi I own except for Nvidia at this point, but a lot of the other ones, Integris, um, Fluence, I have small positions.",
+      "confidence": "high"
+    },
+    {
+      "date": "2026-07-17",
+      "video_id": "gMJT9HQvxnk",
+      "video_title": "AI's Speed Crash: The Structural Bull Market Isn't Over",
+      "asset": "Silver",
+      "action": "rotate_in",
+      "note": "Silver discloses rotating money into it (\"money that I rotated into\")",
+      "quote": "So, and trust me, when I sold out of a lot of this stuff, most a good portion of the money that I rotated into was into Bitcoin, Ethereum, and uh silver.",
+      "confidence": "high"
+    },
+    {
+      "date": "2026-07-11",
+      "video_id": "TP9AEulCw9g",
+      "video_title": "Has Bitcoin Hit The Bottom?",
+      "asset": "MU",
+      "action": "exit",
+      "note": "MU discloses a full exit (\"I sold out of\")",
+      "quote": "Um I part of the reason I I sold out of Micron was because the speculation everywhere was starting to become evident.",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-07-10",
+      "video_id": "Rql_DBJH6Jo",
+      "video_title": "The AI Midcycle Slowdown Is Ending: The Next Leg Runs Through Consumer Agents and Crypto",
+      "asset": "Bitcoin",
+      "action": "rotate_in",
+      "note": "Bitcoin discloses rotating money into it (\"I moved some things into\")",
+      "quote": "I moved some things into silver and Bitcoin which haven't worked out as well.",
+      "confidence": "high"
+    },
+    {
+      "date": "2026-07-10",
+      "video_id": "Rql_DBJH6Jo",
+      "video_title": "The AI Midcycle Slowdown Is Ending: The Next Leg Runs Through Consumer Agents and Crypto",
+      "asset": "MU",
+      "action": "exit",
+      "note": "MU discloses a full exit (\"I was getting out of\")",
+      "quote": "I started talking about the fact that I was getting out of Micron in the middle of May.",
+      "confidence": "high"
+    },
+    {
+      "date": "2026-07-10",
+      "video_id": "Rql_DBJH6Jo",
+      "video_title": "The AI Midcycle Slowdown Is Ending: The Next Leg Runs Through Consumer Agents and Crypto",
+      "asset": "MU",
+      "action": "trim",
+      "note": "MU discloses selling part of the position (\"I reduced my position\")",
+      "quote": "I reduced my position in a bunch of these things down significantly with Micron being the biggest one.",
+      "confidence": "high"
+    },
+    {
+      "date": "2026-07-10",
+      "video_id": "Rql_DBJH6Jo",
+      "video_title": "The AI Midcycle Slowdown Is Ending: The Next Leg Runs Through Consumer Agents and Crypto",
+      "asset": "Silver",
+      "action": "rotate_in",
+      "note": "Silver discloses rotating money into it (\"I moved some things into\")",
+      "quote": "I moved some things into silver and Bitcoin which haven't worked out as well.",
+      "confidence": "high"
+    },
+    {
+      "date": "2026-07-03",
+      "video_id": "XTijic7R3qM",
+      "video_title": "Momentum Volatility Driven Unwind: Warsh, AI Mid-Cycle Slowdown and Bitcoin",
+      "asset": "FLNC",
+      "action": "holds",
+      "note": "FLNC states he holds it (\"I still have\")",
+      "quote": "Uh I still have Marll and I still have Enterrris and I still have Fluence and some other ones that I've I'm in.",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-07-03",
+      "video_id": "XTijic7R3qM",
+      "video_title": "Momentum Volatility Driven Unwind: Warsh, AI Mid-Cycle Slowdown and Bitcoin",
+      "asset": "MRVL",
+      "action": "holds",
+      "note": "MRVL states he holds it (\"I still have\")",
+      "quote": "Uh I still have Marll and I still have Enterrris and I still have Fluence and some other ones that I've I'm in.",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-06-06",
+      "video_id": "5TTtJBwmmnM",
+      "video_title": "Why Is Bitcoin CRASHING?!",
+      "asset": "Bitcoin",
+      "action": "buy",
+      "note": "Bitcoin discloses buying (\"I'm buying\")",
+      "quote": "Well, I'm buying Bitcoin as well.",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-06-06",
+      "video_id": "5TTtJBwmmnM",
+      "video_title": "Why Is Bitcoin CRASHING?!",
+      "asset": "Ethereum",
+      "action": "buy",
+      "note": "Ethereum discloses buying (\"I've been buying\")",
+      "quote": "I've been buying Ethereum during this whole drop.",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-05-23",
+      "video_id": "-pVlPkzQCoc",
+      "video_title": "Bitcoin Will Breakout By Summer If This Happens",
+      "asset": "INTC",
+      "action": "buy",
+      "note": "INTC discloses buying (\"I actually bought\")",
+      "quote": "I actually bought a little bit of Intel in the weakness this week when it got under 110 and I'll continue to look down there.",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-05-23",
+      "video_id": "-pVlPkzQCoc",
+      "video_title": "Bitcoin Will Breakout By Summer If This Happens",
+      "asset": "MU",
+      "action": "buy",
+      "note": "MU discloses buying (\"I started buying\")",
+      "quote": "Um I started buying Micron last year at 105.",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-05-23",
+      "video_id": "-pVlPkzQCoc",
+      "video_title": "Bitcoin Will Breakout By Summer If This Happens",
+      "asset": "MU",
+      "action": "exit",
+      "note": "MU discloses a full exit (\"I got rid of\")",
+      "quote": "And I don't expect a significant fall in the AI trade, but the reason I got rid of Micron is because I think we're entering a new regime.",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-05-16",
+      "video_id": "LXs5lTHkve8",
+      "video_title": "Dogecoin & Bitcoin Are Both Signaling Something Big?",
+      "asset": "MU",
+      "action": "exit",
+      "note": "MU discloses a full exit (\"I got rid of the last\") [subject carried from the earlier sentence in the quote]",
+      "quote": "I mentioned last week that I sold out of 2/3 of my Micron. Well, I got rid of the last third this week because",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-05-16",
+      "video_id": "LXs5lTHkve8",
+      "video_title": "Dogecoin & Bitcoin Are Both Signaling Something Big?",
+      "asset": "MU",
+      "action": "trim",
+      "note": "MU discloses selling part of the position (\"I sold out of 2/3\")",
+      "quote": "I mentioned last week that I sold out of 2/3 of my Micron.",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-05-09",
+      "video_id": "ot6OWSi--tk",
+      "video_title": "The AI Boom Is Very BULLISH For Bitcoin",
+      "asset": "Bitcoin",
+      "action": "buy",
+      "note": "Bitcoin discloses buying (\"I bought\")",
+      "quote": "I bought some Bitcoin.",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-05-09",
+      "video_id": "ot6OWSi--tk",
+      "video_title": "The AI Boom Is Very BULLISH For Bitcoin",
+      "asset": "Ethereum",
+      "action": "buy",
+      "note": "Ethereum discloses buying (\"I bought\")",
+      "quote": "I bought Ethereum because I think tokenization uh reality is going to start to set in the summertime.",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-05-09",
+      "video_id": "ot6OWSi--tk",
+      "video_title": "The AI Boom Is Very BULLISH For Bitcoin",
+      "asset": "MU",
+      "action": "trim",
+      "note": "MU discloses selling part of the position (\"I've gotten rid of 2/3\")",
+      "quote": "I'm I'm guaranteeing you that at some point I've gotten rid of 2/3 of my Micron.",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-04-25",
+      "video_id": "OisxT95bkk8",
+      "video_title": "Why Bitcoin WINS No Matter What Happens to Inflation",
+      "asset": "NVDA",
+      "action": "buy",
+      "note": "NVDA discloses buying (\"I bought\")",
+      "quote": "When I listen to Jensen Huang speak with Dwarkesh, I bought the stock Nvidia the next day.",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-04-18",
+      "video_id": "SlPpXs_8WI4",
+      "video_title": "All-Time High Stocks… Bitcoin About To Explode?",
+      "asset": "Bitcoin",
+      "action": "buy",
+      "note": "Bitcoin discloses buying (\"Did I buy\")",
+      "quote": "Did I buy Bitcoin this week?",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-04-18",
+      "video_id": "SlPpXs_8WI4",
+      "video_title": "All-Time High Stocks… Bitcoin About To Explode?",
+      "asset": "MSTR",
+      "action": "buy",
+      "note": "MSTR discloses buying (\"Did I buy\")",
+      "quote": "Did I buy call options on MicroStrategy this week?",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-03-28",
+      "video_id": "TvR7W-Q7J1M",
+      "video_title": "Why Bitcoin Could Hit All-Time Highs Again in 2026",
+      "asset": "Bitcoin",
+      "action": "holds",
+      "note": "Bitcoin states he holds it (\"my largest investment\")",
+      "quote": "Um, Bitcoin's my largest investment.",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-03-28",
+      "video_id": "TvR7W-Q7J1M",
+      "video_title": "Why Bitcoin Could Hit All-Time Highs Again in 2026",
+      "asset": "Silver",
+      "action": "buy",
+      "note": "Silver discloses buying (\"I've been gradually buying\")",
+      "quote": "I now have a lot more silver than I've been gradually buying silver miners and silver during this because that's one place that I want to be involved.",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-03-28",
+      "video_id": "TvR7W-Q7J1M",
+      "video_title": "Why Bitcoin Could Hit All-Time Highs Again in 2026",
+      "asset": "Silver miners",
+      "action": "buy",
+      "note": "Silver miners discloses buying (\"I've been gradually buying\")",
+      "quote": "I now have a lot more silver than I've been gradually buying silver miners and silver during this because that's one place that I want to be involved.",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-03-21",
+      "video_id": "yFa1iAAk7Bg",
+      "video_title": "Why Bitcoin Could Explode As Global Markets Crack",
+      "asset": "Silver",
+      "action": "buy",
+      "note": "Silver discloses buying (\"I'm buying\")",
+      "quote": "I'm buying silver in in terms of companies this week, cuz I in my mind believe that 3 years from now silver will be needed because of all the drones and all of the technology and all the semiconductors.",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-03-07",
+      "video_id": "5kFhXw1wZvQ",
+      "video_title": "The AI Boom Is EXACTLY Why Bitcoin Exists",
+      "asset": "UVIX",
+      "action": "buy",
+      "note": "UVIX discloses buying (\"I bought\")",
+      "quote": "And so I bought a bunch of UVIX, UVIX as a hedge against my portfolio cuz I don't want to get out of my silver and my Bitcoin and my um uh my semiconductors and all these trades and I want to be in a position as the chaos happens and we reprice volatility and we reprice credit spreads and we reprice the multiple of the S&P.",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-02-21",
+      "video_id": "eZSL4CWTnDg",
+      "video_title": "Bitcoin Is About to Absorb a Historic Rotation",
+      "asset": "Lovable",
+      "action": "holds",
+      "note": "Lovable states he holds it (\"I'm an investor in\")",
+      "quote": "I'm an investor in lovable.",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-02-21",
+      "video_id": "eZSL4CWTnDg",
+      "video_title": "Bitcoin Is About to Absorb a Historic Rotation",
+      "asset": "Micro One",
+      "action": "holds",
+      "note": "Micro One states he holds it (\"I'm an investor in\")",
+      "quote": "I'm an investor in Micro One.",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-02-21",
+      "video_id": "eZSL4CWTnDg",
+      "video_title": "Bitcoin Is About to Absorb a Historic Rotation",
+      "asset": "Synthesis",
+      "action": "holds",
+      "note": "Synthesis states he holds it (\"I'm an investor in\")",
+      "quote": "I'm an investor in uh Synthesis.",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-02-07",
+      "video_id": "kuo-h32FycQ",
+      "video_title": "Bitcoin’s Future Will Be Decided by This One Shift",
+      "asset": "TSLA",
+      "action": "buy",
+      "note": "TSLA discloses buying (\"I bought\")",
+      "quote": "Um, this past week I uh I publicly disclosed that I bought uh Tesla shares.",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-01-31",
+      "video_id": "5gNQef7qm9M",
+      "video_title": "Bitcoin vs Gold vs Stocks: The Chart Everyone Misses",
+      "asset": "MU",
+      "action": "trim",
+      "note": "MU discloses selling part of the position (\"I've reduced the position\")",
+      "quote": "So I'm still in Micron, but I've reduced the position.",
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-01-24",
+      "video_id": "uayWSm17LQ8",
+      "video_title": "Bitcoin vs Silver: The Ultimate Rotation Is Happening Right Now",
+      "asset": "TSLA",
+      "action": "holds",
+      "note": "TSLA states he holds it (\"I own\")",
+      "quote": "So I I own Tesla.",
+      "confidence": "medium"
+    },
+    {
+      "date": "2025-10-18",
+      "video_id": "qly3wAP3hbg",
+      "video_title": "Bitcoin Crashed: Why I'm Still Buying",
+      "asset": "Bitcoin",
+      "action": "buy",
+      "note": "Bitcoin discloses buying (\"I'm buying\")",
+      "quote": "The reason I'm buying Bitcoin is because I think when we get through the all-time highs again and basically get rid of this four-year cycle belief, now there's no imaginary place for people to ever again care about.",
+      "confidence": "medium"
+    },
+    {
+      "date": "2025-10-18",
+      "video_id": "qly3wAP3hbg",
+      "video_title": "Bitcoin Crashed: Why I'm Still Buying",
+      "asset": "Gold",
+      "action": "holds",
+      "note": "Gold states he holds it (\"I'm long\")",
+      "quote": "I'm long gold.",
+      "confidence": "medium"
+    }
+  ],
+  "skipped": [
+    "2026-07-17 gMJT9HQvxnk: \"Kimors\" appears in a first-person position sentence but is a garbled auto-caption; ticker not resolved, move excluded.",
+    "2026-07-03 XTijic7R3qM: \"Enterrris\" appears in a first-person position sentence but is a garbled auto-caption; ticker not resolved, move excluded."
+  ]
+}

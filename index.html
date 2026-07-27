@@ -144,6 +144,49 @@
   .delta.pos { color:var(--in); } .delta.neg { color:var(--out); } .delta.neutral { color:var(--watch); }
   .pos { color:var(--in); } .neg { color:var(--out); }
 
+  /* ---------- Disclosed moves (display-only panel) ---------- */
+  .moves { display:flex; flex-direction:column; gap:10px; }
+  .mv-group { background:var(--surface-2); border:var(--hairline) solid var(--border); border-radius:var(--r); overflow:hidden; }
+  .mv-date {
+    display:flex; align-items:baseline; gap:8px; padding:8px 12px;
+    border-bottom:var(--hairline) solid var(--border-strong);
+    font-family:var(--mono); font-size:.78rem; color:var(--fg-3);
+  }
+  .mv-date .n { margin-left:auto; font-family:var(--sans); font-size:.72rem; color:var(--muted-2); }
+  .mv-row { border-bottom:var(--hairline) solid var(--border); }
+  .mv-row:last-child { border-bottom:0; }
+  .mv-row.dim { opacity:.62; }                            /* confidence "medium": dimmed but present */
+  .mv-row > summary {
+    display:flex; align-items:center; flex-wrap:wrap; gap:5px 8px;
+    padding:8px 12px; cursor:pointer; list-style:none;
+  }
+  .mv-row > summary::-webkit-details-marker { display:none; }
+  .mv-row > summary::marker { content:""; }
+  .mv-row > summary:hover { background:rgba(255,255,255,.03); }
+  .mv-asset { font-family:var(--mono); font-weight:var(--w-med); font-size:.85rem; color:var(--fg); }
+  .mv-act {
+    font-size:.65rem; font-weight:var(--w-med); text-transform:uppercase; letter-spacing:.04em;
+    padding:1px 7px; border-radius:var(--r-badge); white-space:nowrap;
+  }
+  .mv-act[data-a="buy"], .mv-act[data-a="add"], .mv-act[data-a="rotate_in"] { color:var(--in);  background:var(--in-bg); }
+  .mv-act[data-a="trim"], .mv-act[data-a="exit"]                            { color:var(--out); background:var(--out-bg); }
+  .mv-act[data-a="holds"]                                                   { color:var(--muted); background:var(--chip-neutral-bg); }
+  .mv-note { font-size:.82rem; color:var(--fg-3); flex:1 1 14em; min-width:0; }
+  .mv-vid { flex:0 1 auto; min-width:0; font-size:.73rem; color:var(--muted-2); max-width:30ch; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .mv-chev { flex:none; color:var(--muted-2); font-size:.62rem; }
+  .mv-row[open] .mv-chev { transform:rotate(90deg); }
+  .mv-quote {
+    margin:0 12px 10px 12px; padding:8px 12px; border-left:2px solid var(--border-strong);
+    background:var(--surface); border-radius:0 var(--r-sm) var(--r-sm) 0;
+    color:var(--muted); font-size:.82rem; line-height:1.5;
+  }
+  .moves-toggle {
+    margin-top:10px; font:inherit; font-size:.78rem; color:var(--fg-3);
+    background:transparent; border:1px solid var(--border); border-radius:var(--r-sm);
+    padding:7px 12px; cursor:pointer; transition:border-color .16s ease, color .16s ease;
+  }
+  .moves-toggle:hover { color:var(--fg); border-color:var(--border-strong); }
+
   /* ---------- Themes strip ---------- */
   .themes { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
   .theme { background:var(--surface); border:var(--hairline) solid var(--border); border-radius:var(--r); padding:12px; }
@@ -260,6 +303,7 @@
 <body>
 <nav class="mininav" aria-label="Section navigation">
   <a href="#rotation">Rotation</a>
+  <a href="#disclosed-moves-sec" class="hidden">Moves</a>
   <a href="#themes-sec">Themes</a>
   <a href="#action-queue-sec">Queue</a>
   <a href="#baskets-sec">Baskets</a>
@@ -297,6 +341,13 @@
         <div class="lane-body" data-testid="lane-watch"></div>
       </div>
     </div>
+  </section>
+
+  <!-- Hidden until data/disclosed_moves.json loads; absent file leaves it hidden. -->
+  <section aria-label="Disclosed moves" id="disclosed-moves-sec" class="hidden">
+    <div class="sec-head"><h2>Disclosed moves</h2><span class="hint" data-testid="moves-hint"></span></div>
+    <div class="moves" data-testid="moves"></div>
+    <button type="button" class="moves-toggle hidden" data-testid="moves-toggle" aria-expanded="false"></button>
   </section>
 
   <section aria-label="Themes" id="themes-sec">
@@ -513,6 +564,68 @@ function renderTickerTable(tickers, prices, laneOf) {
   });
 }
 
+// ---------- Disclosed moves ----------
+// Display-only: this renders exactly what disclosed_moves.json says. It never computes,
+// infers, or extrapolates a position. Missing or empty file: the panel stays hidden.
+const MOVES_DEFAULT_DATES = 4;
+const MOVE_ACTION_LABELS = { rotate_in: 'rotate in' };
+
+function groupMovesByDate(moves) {
+  const by = new Map();
+  moves.forEach((m) => { if (!by.has(m.date)) by.set(m.date, []); by.get(m.date).push(m); });
+  return [...by.keys()].sort().reverse().map((d) => [d, by.get(d)]);
+}
+
+function moveRowHtml(m) {
+  const dim = m.confidence === 'medium' ? ' dim' : '';
+  const label = MOVE_ACTION_LABELS[m.action] || m.action || '';
+  const hover = m.quote ? ` title="${esc(m.quote)}"` : '';
+  return `<details class="mv-row${dim}">
+      <summary${hover}>
+        <span class="mv-chev">▶</span>
+        <span class="mv-asset">${esc(m.asset)}</span>
+        <span class="mv-act" data-a="${esc(m.action || '')}">${esc(label)}</span>
+        <span class="mv-note">${esc(m.note || '')}</span>
+        <span class="mv-vid">${esc(m.video_title || '')}</span>
+      </summary>
+      ${m.quote ? `<blockquote class="mv-quote">${esc(m.quote)}</blockquote>` : ''}
+    </details>`;
+}
+
+function renderDisclosedMoves(data) {
+  const sec = document.getElementById('disclosed-moves-sec');
+  if (!sec) return;
+  const moves = (data && Array.isArray(data.moves)) ? data.moves.filter((m) => m && m.date) : [];
+  if (!moves.length) return;                       // stays hidden — no error, board unaffected
+
+  const groups = groupMovesByDate(moves);
+  const host = $('[data-testid="moves"]');
+  const btn = $('[data-testid="moves-toggle"]');
+  let showAll = false;
+  const paint = () => {
+    const shown = showAll ? groups : groups.slice(0, MOVES_DEFAULT_DATES);
+    host.innerHTML = shown.map(([date, items]) => `
+      <div class="mv-group">
+        <div class="mv-date"><span>${esc(date)}</span><span class="n">${items.length} ${items.length === 1 ? 'move' : 'moves'}</span></div>
+        ${items.map(moveRowHtml).join('')}
+      </div>`).join('');
+    btn.textContent = showAll ? `Show latest ${MOVES_DEFAULT_DATES} dates` : `Show all ${groups.length} dates`;
+    btn.setAttribute('aria-expanded', String(showAll));
+  };
+  if (groups.length > MOVES_DEFAULT_DATES) {
+    btn.classList.remove('hidden');
+    btn.addEventListener('click', () => { showAll = !showAll; paint(); });
+  }
+  paint();
+
+  const vids = data.source_videos;
+  $('[data-testid="moves-hint"]').textContent =
+    `${moves.length} disclosed${typeof vids === 'number' ? ` across ${vids} source videos` : ''} · quote on expand`;
+  sec.classList.remove('hidden');
+  const navLink = document.querySelector('.mininav a[href="#disclosed-moves-sec"]');
+  if (navLink) navLink.classList.remove('hidden');
+}
+
 function renderFooter(meta) {
   $('[data-testid="disclaimer"]').textContent = meta.disclaimer;
   $('[data-testid="cadences"]').textContent = `Rotation data: ${meta.cadences.rotation_data} · Close prices: ${meta.cadences.close_prices}`;
@@ -623,6 +736,7 @@ async function loadJson(path) {
 async function main() {
   const rotation = await loadJson('./data/rotation_latest.json');
   const prices = await loadJson('./data/prices.json');
+  const moves = await loadJson('./data/disclosed_moves.json');
   if (!rotation) { document.body.innerHTML = '<main><p style="color:var(--out)">Failed to load rotation data.</p></main>'; return; }
   rotation.tickers.forEach((t) => { metaOf[t.ticker] = { us: !!t.us_listed, exch: t.exchange_country }; });
   Object.values(rotation.signal_changes).forEach((bucket) => bucket.forEach((n) => { if (n.prev_setup != null) prevSetupOf[n.ticker] = n.prev_setup; }));
@@ -639,6 +753,7 @@ async function main() {
   $('[data-testid="count-in"]').textContent = `(${lanes.in.length})`;
   $('[data-testid="count-out"]').textContent = `(${lanes.out.length})`;
   $('[data-testid="count-watch"]').textContent = `(${lanes.watch.length})`;
+  renderDisclosedMoves(moves);
   renderThemes(rotation.themes);
   renderActionQueue(rotation.action_queue);
   renderBasket('basket-10', rotation.baskets['10_name'], prices);
