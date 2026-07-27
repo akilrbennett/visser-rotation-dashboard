@@ -11,12 +11,14 @@
     /* ---- Linear tokens: values from design/linear/tokens.json (authoritative) ---- */
     --color-void:#08090a;        --color-carbon:#0f1011;      --color-obsidian:#161718;
     --color-graphite:#23252a;    --color-smoke:#383b3f;
-    --color-ash:#62666d;         --color-fog:#8a8f98;         --color-mist:#d0d6e0;
+    --color-fog:#8a8f98;         --color-mist:#d0d6e0;
     --color-bone:#e5e5e6;        --color-paper:#ffffff;
     --color-acid-lime:#e4f222;   --color-pulse-green:#27a644; --color-coral-red:#eb5757;
-    /* Signal Teal #02b8cc has no role in the locked mapping, so it is not declared.
-       Iris Violet #6366f1 and Lavender #8b5cf6 are used only as the alpha tints and
-       lightened text tints below, so they are declared there rather than as bare hexes. */
+    /* Not declared, because nothing on this dashboard has a role for them:
+       Ash #62666d is reserved for genuinely inactive or disabled elements, and this
+       dashboard has none (every muted element is readable text or a live affordance).
+       Signal Teal #02b8cc has no role in the locked mapping. Iris Violet #6366f1 and
+       Lavender #8b5cf6 live below as the chip tints rather than as bare hexes. */
 
     /* ---- Role mapping (DECISIONS-LOCKED) ---- */
     --bg:var(--color-void);              /* page canvas */
@@ -29,8 +31,7 @@
     --fg:var(--color-paper);             /* primary headings / emphasis */
     --fg-2:var(--color-bone);            /* high-contrast body */
     --fg-3:var(--color-mist);            /* secondary body */
-    --muted:var(--color-fog);            /* tertiary */
-    --muted-2:var(--color-ash);          /* muted / inactive */
+    --muted:var(--color-fog);            /* tertiary and muted text, 6.13:1 on Void */
     --accent:var(--color-acid-lime);     /* header mark, active states, links; sparingly */
 
     /* ---- Semantic exception (locked): Rotating In green, Rotating Out red, Watch amber ---- */
@@ -96,20 +97,20 @@
     color:var(--fg-3); background:rgba(255,255,255,.05); letter-spacing:.02em; text-transform:uppercase; white-space:nowrap;
   }
   .meta-line { display:flex; flex-wrap:wrap; gap:6px 18px; margin-top:10px; font-size:.86rem; }
-  .meta-line .k { color:var(--muted-2); }
+  .meta-line .k { color:var(--muted); }
   .meta-line .v { color:var(--fg); font-family:var(--mono); }
   .macro-frame { margin-top:14px; padding:10px 14px; border-left:2px solid var(--border-strong); background:var(--surface); border-radius:0 var(--r-sm) var(--r-sm) 0; }
-  .mf-label { display:block; font-size:.7rem; text-transform:uppercase; letter-spacing:.05em; color:var(--muted-2); margin-bottom:3px; }
+  .mf-label { display:block; font-size:.7rem; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); margin-bottom:3px; }
   .narrative { margin:0; color:var(--fg-3); font-size:.94rem; max-width:78ch; }
 
   /* ---------- Section scaffolding ---------- */
   section { margin:34px 0 0; }
   .sec-head { display:flex; align-items:baseline; gap:12px; margin:0 0 14px; }
   .sec-head h2 { font-size:1.06rem; font-weight:var(--w-med); margin:0; letter-spacing:var(--track-md); }
-  .sec-head .hint { color:var(--muted-2); font-size:.8rem; }
+  .sec-head .hint { color:var(--muted); font-size:.8rem; }
 
   /* ---------- Ticker links ---------- */
-  .tkr-link { color:inherit; text-decoration:none; border-bottom:1px dotted var(--muted-2); }
+  .tkr-link { color:inherit; text-decoration:none; border-bottom:1px dotted var(--muted); }
   .tkr-link:hover { color:var(--accent); border-bottom-color:var(--accent); }
   .tkr-link:focus-visible { outline:2px solid var(--accent); outline-offset:2px; border-radius:3px; }
 
@@ -156,10 +157,15 @@
     border-bottom:var(--hairline) solid var(--border-strong);
     font-family:var(--mono); font-size:.78rem; color:var(--fg-3);
   }
-  .mv-date .n { margin-left:auto; font-family:var(--sans); font-size:.72rem; color:var(--muted-2); }
+  .mv-date .n { margin-left:auto; font-family:var(--sans); font-size:.72rem; color:var(--muted); }
   .mv-row { border-bottom:var(--hairline) solid var(--border); }
   .mv-row:last-child { border-bottom:0; }
-  .mv-row.dim { opacity:.62; }                            /* confidence "medium": dimmed but present */
+  /* Confidence "medium": dimmed but present (ruling 4). Dimming steps the row down the
+     text ramp rather than lowering opacity. An alpha dim compounds with the surface and
+     pushed the Fog video title to 2.90:1; stepping the ramp keeps every element at 5.52:1
+     while the row still visibly loses its bright anchor. */
+  .mv-row.dim .mv-asset,
+  .mv-row.dim .mv-note { color:var(--muted); }
   .mv-row > summary {
     display:flex; align-items:center; flex-wrap:wrap; gap:5px 8px;
     padding:8px 12px; cursor:pointer; list-style:none;
@@ -176,8 +182,8 @@
   .mv-act[data-a="trim"], .mv-act[data-a="exit"]                            { color:var(--out); background:var(--out-bg); }
   .mv-act[data-a="holds"]                                                   { color:var(--muted); background:var(--chip-neutral-bg); }
   .mv-note { font-size:.82rem; color:var(--fg-3); flex:1 1 14em; min-width:0; }
-  .mv-vid { flex:0 1 auto; min-width:0; font-size:.73rem; color:var(--muted-2); max-width:30ch; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-  .mv-chev { flex:none; color:var(--muted-2); font-size:.62rem; }
+  .mv-vid { flex:0 1 auto; min-width:0; font-size:.73rem; color:var(--muted); max-width:30ch; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .mv-chev { flex:none; color:var(--muted); font-size:.62rem; }
   .mv-row[open] .mv-chev { transform:rotate(90deg); }
   .mv-quote {
     margin:0 12px 10px 12px; padding:8px 12px; border-left:2px solid var(--border-strong);
@@ -214,7 +220,7 @@
   /* ---------- Action queue ---------- */
   .aq { display:flex; flex-direction:column; gap:6px; }
   .aq .row { display:flex; align-items:center; gap:10px; flex-wrap:wrap; background:var(--surface); border:var(--hairline) solid var(--border); border-radius:var(--r-sm); padding:8px 12px; }
-  .aq .rank { font-family:var(--mono); color:var(--muted-2); font-size:.78rem; min-width:1.4em; }
+  .aq .rank { font-family:var(--mono); color:var(--muted); font-size:.78rem; min-width:1.4em; }
   .badge { font-size:.66rem; font-weight:var(--w-med); text-transform:uppercase; letter-spacing:.04em; padding:2px 7px; border-radius:var(--r-badge); }
   .badge[data-p="High"]   { color:var(--in);    background:var(--in-bg);    border:1px solid var(--in-bd); }
   .badge[data-p="Medium"] { color:var(--watch); background:var(--watch-bg); border:1px solid var(--watch-bd); }
@@ -235,7 +241,7 @@
   /* ---------- Filters ---------- */
   .filters { display:flex; flex-direction:column; gap:8px; margin-bottom:12px; }
   .fgroup { display:flex; align-items:center; gap:7px; flex-wrap:wrap; }
-  .flabel { color:var(--muted-2); font-size:.74rem; text-transform:uppercase; letter-spacing:.05em; min-width:62px; }
+  .flabel { color:var(--muted); font-size:.74rem; text-transform:uppercase; letter-spacing:.05em; min-width:62px; }
   .chip {
     font:inherit; font-size:.78rem; color:var(--fg-3); background:rgba(255,255,255,.05);
     border:1px solid var(--border); border-radius:var(--r-pill); padding:5px 12px; cursor:pointer;
