@@ -6,7 +6,19 @@
 <title>AI Macro Nexus — Rotation</title>
 <style>
   /* Self-contained, no external/CDN runtime deps. Linear design language.
-     Fonts: prefer locally-installed Inter Variable / Berkeley Mono, else system stack, no network fetch. */
+     Inter is self-hosted from fonts/ (same-origin). Berkeley Mono is used only if the
+     viewer has it installed; otherwise the monospace stack below takes over. */
+
+  /* Inter Variable, subsetted from the official rsms/inter v4.1 release (SIL OFL 1.1).
+     Variable weight axis 100-900, so the 400 and 510 steps both come from this one file. */
+  @font-face {
+    font-family:"Inter Variable";
+    src:url("./fonts/InterVariable-subset.woff2") format("woff2");
+    font-weight:100 900;
+    font-style:normal;
+    font-display:swap;
+  }
+
   :root {
     /* ---- Linear tokens: values from design/linear/tokens.json (authoritative) ---- */
     --color-void:#08090a;        --color-carbon:#0f1011;      --color-obsidian:#161718;
