@@ -7,6 +7,10 @@
   "scripts": {
     "test": "node --test",
     "fetch": "node scripts/fetch_prices.mjs",
-    "preview": "bash scripts/preview.sh"
+    "preview": "bash scripts/preview.sh",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.0"
   }
 }

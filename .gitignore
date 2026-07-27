@@ -5,6 +5,10 @@
 node_modules/
 npm-debug.log*
 
+# Playwright run artifacts
+test-results/
+playwright-report/
+
 # Secrets / local env — the Massive API key must NEVER be committed
 .env
 .env.*
