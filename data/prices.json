@@ -242,6 +242,34 @@
       "close": 239.71,
       "date": "2026-08-07",
       "change_pct": 3.42
+    },
+    "AVGO": {
+      "close": 427.76,
+      "date": "2026-08-07"
+    },
+    "PLTR": {
+      "close": 172.01,
+      "date": "2026-08-07"
+    },
+    "SLV": {
+      "close": 57.5,
+      "date": "2026-08-07"
+    },
+    "FN": {
+      "close": 562.38,
+      "date": "2026-08-07"
+    },
+    "EXTR": {
+      "close": 23.97,
+      "date": "2026-08-07"
+    },
+    "D": {
+      "close": 67.39,
+      "date": "2026-08-07"
+    },
+    "CBT": {
+      "close": 87.62,
+      "date": "2026-08-07"
     }
   },
   "missing": [
@@ -261,5 +289,6 @@
     "SIE.DE",
     "SOI.PA",
     "SU.PA"
-  ]
+  ],
+  "note": "Backfilled 2026-08-10: AVGO, PLTR, SLV, FN, EXTR, D, CBT were absent because the last fetch (2026-08-07) predates the 2026-08-07 rotation roster. Closes are verified 2026-08-07 daily bars; change_pct omitted because it could not be reproduced on the same snapshot basis as the other quotes."
 }
