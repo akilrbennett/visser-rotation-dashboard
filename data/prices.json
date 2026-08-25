@@ -1,277 +1,277 @@
 {
-  "as_of": "2026-08-24",
-  "fetched_at": "2026-08-24T22:53:46.067Z",
+  "as_of": "2026-08-25",
+  "fetched_at": "2026-08-25T22:55:39.800Z",
   "source": "Massive/Polygon snapshot (current-day close)",
   "quotes": {
-    "KLAC": {
-      "close": 181.57,
-      "date": "2026-08-24",
-      "change_pct": -1.37
-    },
-    "ESI": {
-      "close": 34.98,
-      "date": "2026-08-24",
-      "change_pct": -0.93
-    },
-    "ANET": {
-      "close": 188.15,
-      "date": "2026-08-24",
-      "change_pct": -0.27
-    },
-    "LSCC": {
-      "close": 114.15,
-      "date": "2026-08-24",
-      "change_pct": -3.01
-    },
-    "BIPC": {
-      "close": 39.22,
-      "date": "2026-08-24",
-      "change_pct": -0.83
-    },
-    "COHR": {
-      "close": 275.49,
-      "date": "2026-08-24",
-      "change_pct": -4.99
-    },
-    "NVT": {
-      "close": 153.35,
-      "date": "2026-08-24",
-      "change_pct": 0.9
-    },
-    "CC": {
-      "close": 15.39,
-      "date": "2026-08-24",
-      "change_pct": -3.63
-    },
-    "ETN": {
-      "close": 408.67,
-      "date": "2026-08-24",
-      "change_pct": -2.51
-    },
-    "CVX": {
-      "close": 203.09,
-      "date": "2026-08-24",
-      "change_pct": -1.06
-    },
-    "AVGO": {
-      "close": 358.76,
-      "date": "2026-08-24",
-      "change_pct": -2.59
-    },
-    "ASML": {
-      "close": 1740.13,
-      "date": "2026-08-24",
-      "change_pct": -1.35
-    },
-    "LITE": {
-      "close": 830.17,
-      "date": "2026-08-24",
-      "change_pct": -4.36
-    },
-    "IBIT": {
-      "close": 44.64,
-      "date": "2026-08-24",
-      "change_pct": 2.34
-    },
     "BDC": {
-      "close": 116.76,
-      "date": "2026-08-24",
-      "change_pct": -4.65
-    },
-    "TSM": {
-      "close": 410.12,
-      "date": "2026-08-24",
-      "change_pct": -2.13
-    },
-    "INTC": {
-      "close": 87.26,
-      "date": "2026-08-24",
-      "change_pct": -3.25
-    },
-    "EXTR": {
-      "close": 22.38,
-      "date": "2026-08-24",
-      "change_pct": -2.26
-    },
-    "ARM": {
-      "close": 238.78,
-      "date": "2026-08-24",
-      "change_pct": -2.19
-    },
-    "PLTR": {
-      "close": 175.89,
-      "date": "2026-08-24",
-      "change_pct": -2.19
-    },
-    "CRDO": {
-      "close": 222.61,
-      "date": "2026-08-24",
-      "change_pct": -3.91
-    },
-    "EWZ": {
-      "close": 35.17,
-      "date": "2026-08-24",
-      "change_pct": 0.83
-    },
-    "P": {
-      "close": 100.44,
-      "date": "2026-08-24",
-      "change_pct": -7.47
-    },
-    "MOD": {
-      "close": 188.37,
-      "date": "2026-08-24",
-      "change_pct": -4.71
-    },
-    "SLV": {
-      "close": 62.2,
-      "date": "2026-08-24",
-      "change_pct": -0.52
-    },
-    "ALAB": {
-      "close": 277.53,
-      "date": "2026-08-24",
-      "change_pct": -3.02
-    },
-    "TT": {
-      "close": 452.96,
-      "date": "2026-08-24",
-      "change_pct": -0.1
-    },
-    "KMI": {
-      "close": 31,
-      "date": "2026-08-24",
-      "change_pct": 0.06
-    },
-    "QCOM": {
-      "close": 158.53,
-      "date": "2026-08-24",
-      "change_pct": -1.41
-    },
-    "MKSI": {
-      "close": 269.06,
-      "date": "2026-08-24",
-      "change_pct": -4.46
-    },
-    "AMD": {
-      "close": 456.745,
-      "date": "2026-08-24",
-      "change_pct": -3.58
-    },
-    "GLW": {
-      "close": 145.55,
-      "date": "2026-08-24",
-      "change_pct": -3.08
-    },
-    "ROG": {
-      "close": 122.84,
-      "date": "2026-08-24",
-      "change_pct": -2.93
-    },
-    "HUBB": {
-      "close": 466.76,
-      "date": "2026-08-24",
-      "change_pct": -0.7
-    },
-    "BE": {
-      "close": 204.02,
-      "date": "2026-08-24",
-      "change_pct": 2.38
-    },
-    "LLY": {
-      "close": 1246.93,
-      "date": "2026-08-24",
-      "change_pct": -0.51
-    },
-    "CIEN": {
-      "close": 371.95,
-      "date": "2026-08-24",
-      "change_pct": -6.02
-    },
-    "AAOI": {
-      "close": 107.63,
-      "date": "2026-08-24",
-      "change_pct": -13.32
-    },
-    "CBT": {
-      "close": 83.88,
-      "date": "2026-08-24",
-      "change_pct": -1.54
-    },
-    "CDNS": {
-      "close": 315.92,
-      "date": "2026-08-24",
-      "change_pct": -0.97
-    },
-    "CEG": {
-      "close": 273.43,
-      "date": "2026-08-24",
-      "change_pct": -0.57
-    },
-    "MRVL": {
-      "close": 229.29,
-      "date": "2026-08-24",
-      "change_pct": -3.14
-    },
-    "CAT": {
-      "close": 811.02,
-      "date": "2026-08-24",
-      "change_pct": -2.1
-    },
-    "MU": {
-      "close": 910.43,
-      "date": "2026-08-24",
-      "change_pct": -6.11
-    },
-    "NVDA": {
-      "close": 208.48,
-      "date": "2026-08-24",
-      "change_pct": -2.8
-    },
-    "FN": {
-      "close": 421.14,
-      "date": "2026-08-24",
-      "change_pct": -3.4
-    },
-    "AIP": {
-      "close": 22.61,
-      "date": "2026-08-24",
-      "change_pct": -5.73
-    },
-    "CSCO": {
-      "close": 110.23,
-      "date": "2026-08-24",
-      "change_pct": -0.69
+      "close": 116.96,
+      "date": "2026-08-25",
+      "change_pct": 0.17
     },
     "ETR": {
-      "close": 105.79,
-      "date": "2026-08-24",
-      "change_pct": 1.12
+      "close": 106.24,
+      "date": "2026-08-25",
+      "change_pct": 0.43
     },
-    "ENTG": {
-      "close": 138.25,
-      "date": "2026-08-24",
-      "change_pct": -3.91
+    "PLTR": {
+      "close": 172.73,
+      "date": "2026-08-25",
+      "change_pct": -1.94
     },
-    "DELL": {
-      "close": 433.19,
-      "date": "2026-08-24",
-      "change_pct": -2.01
+    "BIPC": {
+      "close": 39.63,
+      "date": "2026-08-25",
+      "change_pct": 1.05
+    },
+    "NVT": {
+      "close": 151.48,
+      "date": "2026-08-25",
+      "change_pct": -1.22
+    },
+    "ANET": {
+      "close": 190.94,
+      "date": "2026-08-25",
+      "change_pct": 1.48
+    },
+    "CDNS": {
+      "close": 331.9,
+      "date": "2026-08-25",
+      "change_pct": 4.99
+    },
+    "LLY": {
+      "close": 1233.66,
+      "date": "2026-08-25",
+      "change_pct": -1.06
+    },
+    "BE": {
+      "close": 217.45,
+      "date": "2026-08-25",
+      "change_pct": 6.86
+    },
+    "ETN": {
+      "close": 409.2,
+      "date": "2026-08-25",
+      "change_pct": 0.13
+    },
+    "IBIT": {
+      "close": 44.72,
+      "date": "2026-08-25",
+      "change_pct": 0.02
+    },
+    "SLV": {
+      "close": 62.32,
+      "date": "2026-08-25",
+      "change_pct": 0.18
+    },
+    "LSCC": {
+      "close": 116.1,
+      "date": "2026-08-25",
+      "change_pct": 2.65
+    },
+    "COHR": {
+      "close": 288.14,
+      "date": "2026-08-25",
+      "change_pct": 4.89
+    },
+    "AIP": {
+      "close": 23.23,
+      "date": "2026-08-25",
+      "change_pct": 4.29
+    },
+    "P": {
+      "close": 102.81,
+      "date": "2026-08-25",
+      "change_pct": 2.36
+    },
+    "EWZ": {
+      "close": 35.88,
+      "date": "2026-08-25",
+      "change_pct": 2.02
     },
     "NEE": {
-      "close": 84.1,
-      "date": "2026-08-24",
-      "change_pct": 0.54
+      "close": 84.22,
+      "date": "2026-08-25",
+      "change_pct": 0.14
+    },
+    "AAOI": {
+      "close": 113.15,
+      "date": "2026-08-25",
+      "change_pct": 5.27
+    },
+    "GLW": {
+      "close": 147.16,
+      "date": "2026-08-25",
+      "change_pct": 1.34
+    },
+    "MOD": {
+      "close": 188.01,
+      "date": "2026-08-25",
+      "change_pct": -0.19
+    },
+    "ARM": {
+      "close": 241.56,
+      "date": "2026-08-25",
+      "change_pct": 1.68
+    },
+    "INTC": {
+      "close": 87.48,
+      "date": "2026-08-25",
+      "change_pct": 0.62
+    },
+    "ESI": {
+      "close": 35.5,
+      "date": "2026-08-25",
+      "change_pct": 0.43
+    },
+    "CRDO": {
+      "close": 226.51,
+      "date": "2026-08-25",
+      "change_pct": 1.61
+    },
+    "MRVL": {
+      "close": 240.38,
+      "date": "2026-08-25",
+      "change_pct": 5.44
+    },
+    "CSCO": {
+      "close": 111.11,
+      "date": "2026-08-25",
+      "change_pct": 0.87
+    },
+    "ASML": {
+      "close": 1744.16,
+      "date": "2026-08-25",
+      "change_pct": 0.4
+    },
+    "CC": {
+      "close": 15.77,
+      "date": "2026-08-25",
+      "change_pct": 2.47
+    },
+    "AVGO": {
+      "close": 356.74,
+      "date": "2026-08-25",
+      "change_pct": -0.31
+    },
+    "ALAB": {
+      "close": 282.65,
+      "date": "2026-08-25",
+      "change_pct": 2.09
+    },
+    "ROG": {
+      "close": 124.74,
+      "date": "2026-08-25",
+      "change_pct": 1.55
+    },
+    "LITE": {
+      "close": 885.565,
+      "date": "2026-08-25",
+      "change_pct": 6.37
+    },
+    "CBT": {
+      "close": 83.64,
+      "date": "2026-08-25",
+      "change_pct": -0.29
     },
     "EME": {
-      "close": 764.9,
-      "date": "2026-08-24",
-      "change_pct": -1.51
+      "close": 739.87,
+      "date": "2026-08-25",
+      "change_pct": -3.27
+    },
+    "AMD": {
+      "close": 479.18,
+      "date": "2026-08-25",
+      "change_pct": 5.42
+    },
+    "FN": {
+      "close": 431.54,
+      "date": "2026-08-25",
+      "change_pct": 2.47
+    },
+    "CEG": {
+      "close": 278.42,
+      "date": "2026-08-25",
+      "change_pct": 1.84
+    },
+    "QCOM": {
+      "close": 160.56,
+      "date": "2026-08-25",
+      "change_pct": 0.99
+    },
+    "TT": {
+      "close": 455.25,
+      "date": "2026-08-25",
+      "change_pct": 0.51
+    },
+    "DELL": {
+      "close": 451.5,
+      "date": "2026-08-25",
+      "change_pct": 4.23
+    },
+    "MU": {
+      "close": 932.97,
+      "date": "2026-08-25",
+      "change_pct": 2.58
+    },
+    "ENTG": {
+      "close": 138.87,
+      "date": "2026-08-25",
+      "change_pct": 0.72
+    },
+    "EXTR": {
+      "close": 22.63,
+      "date": "2026-08-25",
+      "change_pct": 1.43
+    },
+    "NVDA": {
+      "close": 213.05,
+      "date": "2026-08-25",
+      "change_pct": 2.68
     },
     "D": {
-      "close": 66.61,
-      "date": "2026-08-24",
-      "change_pct": 0.02
+      "close": 66.93,
+      "date": "2026-08-25",
+      "change_pct": 0.48
+    },
+    "KLAC": {
+      "close": 183.34,
+      "date": "2026-08-25",
+      "change_pct": 1.34
+    },
+    "MKSI": {
+      "close": 270.48,
+      "date": "2026-08-25",
+      "change_pct": 0.53
+    },
+    "TSM": {
+      "close": 417.41,
+      "date": "2026-08-25",
+      "change_pct": 1.78
+    },
+    "CAT": {
+      "close": 811.29,
+      "date": "2026-08-25",
+      "change_pct": 0.03
+    },
+    "HUBB": {
+      "close": 464.19,
+      "date": "2026-08-25",
+      "change_pct": -0.55
+    },
+    "CVX": {
+      "close": 199.89,
+      "date": "2026-08-25",
+      "change_pct": -1.67
+    },
+    "KMI": {
+      "close": 30.94,
+      "date": "2026-08-25",
+      "change_pct": -0.19
+    },
+    "CIEN": {
+      "close": 387.66,
+      "date": "2026-08-25",
+      "change_pct": 4.22
     }
   },
   "missing": [
